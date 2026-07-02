@@ -1,0 +1,2244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How To Build Your Brand Workbook – Zain Bashir</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  /* ===== DESIGN TOKENS ===== */
+  :root {
+    --ink:       #0D0D0D;
+    --ink-soft:  #2C2C2C;
+    --ink-muted: #5A5A5A;
+    --page:      #FAFAF7;
+    --paper:     #F3F1EB;
+    --paper-alt: #ECEAE2;
+    --gold:      #B8963E;
+    --gold-lt:   #D4AC5A;
+    --gold-pale: #F5EDD8;
+    --accent:    #1B3A4B;
+    --accent-md: #24526A;
+    --accent-lt: #E8F0F4;
+    --rule:      #C8C0A8;
+    --white:     #FFFFFF;
+    --shadow:    0 2px 16px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+  }
+
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--page);
+    color: var(--ink);
+    line-height: 1.75;
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+  h1 { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 900; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; }
+  h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 600; }
+  h4 { font-size: 1.1rem; font-weight: 600; }
+  p  { font-size: 1rem; color: var(--ink-soft); }
+
+  /* ===== UTILITY ===== */
+  .gold { color: var(--gold); }
+  .accent-color { color: var(--accent); }
+  .uppercase { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 600; }
+  .rule-h { border: none; border-top: 1px solid var(--rule); margin: 2rem 0; }
+  .tag {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.85rem;
+    border-radius: 2px;
+  }
+  .tag-gold {
+    background: var(--gold);
+    color: var(--white);
+  }
+
+  /* ===== LAYOUT ===== */
+  .page-wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 80px 0; }
+  .section-alt { background: var(--paper); }
+  .section-dark { background: var(--accent); color: var(--white); }
+  .section-dark p, .section-dark li { color: rgba(255,255,255,0.85); }
+  .section-dark h2, .section-dark h3, .section-dark h4 { color: var(--white); }
+  .section-ink { background: var(--ink); color: var(--white); }
+  .section-ink p, .section-ink li { color: rgba(255,255,255,0.8); }
+  .section-ink h2, .section-ink h3 { color: var(--white); }
+
+  /* ===== COVER ===== */
+  .cover {
+    background: var(--accent);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 80px 24px;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 480px; height: 480px;
+    border: 80px solid var(--gold);
+    border-radius: 50%;
+    opacity: 0.08;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 320px; height: 320px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.05;
+  }
+  .cover-inner { max-width: 920px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+  .cover-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .cover-eyebrow::after { content: ''; flex: 1; max-width: 80px; height: 1px; background: var(--gold-lt); }
+  .cover h1 { color: var(--white); line-height: 1.05; }
+  .cover h1 span { color: var(--gold-lt); display: block; }
+  .cover-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    color: var(--gold-lt);
+    font-style: italic;
+    margin-top: 1.5rem;
+  }
+  .cover-author {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .cover-author strong { color: var(--white); font-size: 1rem; letter-spacing: 0.02em; text-transform: none; display: block; margin-top: 0.25rem; font-family: 'Playfair Display', serif; font-size: 1.4rem; }
+
+  /* ===== CHAPTER DIVIDERS ===== */
+  .chapter-divider {
+    background: var(--ink);
+    padding: 100px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-divider::before {
+    content: attr(data-num);
+    position: absolute;
+    right: 0; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 18vw;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .chapter-divider-inner { max-width: 920px; margin: 0 auto; position: relative; z-index: 1; }
+  .chapter-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .chapter-divider h2 { color: var(--white); font-size: clamp(2.5rem, 5vw, 4.5rem); }
+
+  /* ===== INTRO PAGE ===== */
+  .intro-block {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    padding: 2.5rem 2.5rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .intro-block p { color: var(--ink-soft); font-size: 1.05rem; line-height: 1.8; }
+  .intro-block p + p { margin-top: 1rem; }
+  .intro-italic { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; color: var(--accent); }
+
+  /* ===== TOC ===== */
+  .toc-grid { display: grid; gap: 0; }
+  .toc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule);
+    gap: 1rem;
+  }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-chapter { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; }
+  .toc-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--ink); }
+  .toc-sub { font-size: 0.82rem; color: var(--ink-muted); margin-top: 0.15rem; }
+  .toc-page { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--ink-muted); white-space: nowrap; }
+
+  /* ===== OBJECTIVE BOX ===== */
+  .obj-box {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0;
+    margin: 2.5rem 0;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .obj-label {
+    background: var(--accent);
+    color: var(--white);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .obj-content { padding: 1.75rem 2rem; background: var(--white); }
+  .obj-content p { color: var(--ink-soft); font-size: 0.95rem; }
+  .obj-content p + p { margin-top: 0.75rem; }
+  .obj-list { margin: 0.75rem 0 0 1rem; }
+  .obj-list li { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 0.4rem; }
+
+  /* ===== EXERCISE TABLE ===== */
+  .ex-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+  .ex-table-header {
+    background: var(--accent);
+    color: var(--white);
+    text-align: center;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .ex-table td { border: 1px solid var(--rule); }
+  .ex-table .q-cell {
+    background: var(--accent-lt);
+    padding: 1.5rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--accent);
+    width: 38%;
+    vertical-align: top;
+  }
+  .ex-table .a-cell { background: var(--white); padding: 1.5rem 1.25rem; min-height: 80px; vertical-align: top; }
+
+  /* ===== STEP BLOCK ===== */
+  .step-block { margin: 2.5rem 0; }
+  .step-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .step-badge {
+    background: var(--accent);
+    color: var(--white);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 2px;
+  }
+  .step-block h3 { color: var(--accent); margin-bottom: 0.75rem; }
+
+  /* ===== PART BLOCK ===== */
+  .part-block { margin: 2.5rem 0; }
+  .part-label {
+    display: inline-flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;
+  }
+  .part-badge {
+    background: var(--gold);
+    color: var(--white);
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.25rem 0.7rem; border-radius: 2px;
+  }
+  .part-block h3 { color: var(--ink); margin-bottom: 0.75rem; }
+
+  /* ===== CONTENT LIST ===== */
+  .content-list { list-style: none; margin: 1rem 0; }
+  .content-list li {
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    border-bottom: 1px solid var(--paper-alt);
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+  .content-list li::before {
+    content: '›';
+    position: absolute; left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .content-list li strong { color: var(--ink); }
+
+  /* ===== BULLET LIST ===== */
+  .bullet-list { list-style: none; margin: 1rem 0 1rem 0; }
+  .bullet-list li {
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+  .bullet-list li::before {
+    content: '';
+    position: absolute; left: 0; top: 0.85rem;
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+  .bullet-list li strong { color: var(--ink); }
+  .bullet-list .sub-list { margin-top: 0.4rem; margin-left: 1rem; }
+  .bullet-list .sub-list li::before { background: var(--rule); }
+
+  /* ===== NUMBERED LIST ===== */
+  .num-list { list-style: none; counter-reset: nl; margin: 1rem 0; }
+  .num-list li {
+    counter-increment: nl;
+    padding: 0.5rem 0 0.5rem 2.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--paper-alt);
+  }
+  .num-list li:last-child { border-bottom: none; }
+  .num-list li::before {
+    content: counter(nl, decimal-leading-zero);
+    position: absolute; left: 0; top: 0.5rem;
+    font-size: 0.7rem; font-weight: 700;
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+  }
+  .num-list li strong { color: var(--ink); }
+
+  /* ===== CARDS GRID ===== */
+  .cards-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin: 2rem 0; }
+  .cards-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; margin: 2rem 0; }
+  .card {
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 4px;
+    padding: 1.75rem 1.5rem;
+  }
+  .card-num { font-size: 2rem; font-weight: 900; color: var(--gold); font-family: 'Playfair Display', serif; margin-bottom: 0.5rem; }
+  .card h4 { color: var(--white); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'Inter', sans-serif; margin-bottom: 0.75rem; }
+  .card p { color: rgba(255,255,255,0.75); font-size: 0.9rem; }
+  .card-arrow { color: var(--gold); font-size: 1.4rem; margin: 0.75rem 0; }
+  .card-light { background: var(--white); border: 1px solid var(--rule); }
+  .card-light h4 { color: var(--accent); }
+  .card-light p { color: var(--ink-soft); }
+
+  /* ===== EXAMPLE BLOCK ===== */
+  .example-hdr {
+    background: var(--accent);
+    color: var(--white);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.65rem 1rem;
+    border-radius: 4px 4px 0 0;
+  }
+  .example-body { background: var(--white); border: 1px solid var(--rule); border-top: none; border-radius: 0 0 4px 4px; padding: 2rem; margin-bottom: 2rem; }
+
+  /* ===== BRAND STORY VISUAL ===== */
+  .story-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 2rem 0; }
+  .story-col { background: var(--ink); padding: 2rem 1.5rem; text-align: center; position: relative; }
+  .story-col::after { content: ''; position: absolute; right: -1px; top: 20%; bottom: 20%; width: 2px; background: var(--accent); }
+  .story-col:last-child::after { display: none; }
+  .story-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--gold); }
+  .story-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-lt); margin: 0.5rem 0 0.75rem; }
+  .story-col p { color: rgba(255,255,255,0.75); font-size: 0.88rem; }
+
+  /* ===== WEEK CALENDAR ===== */
+  .week-cal { display: grid; grid-template-columns: repeat(5,1fr); gap: 4px; margin: 1.5rem 0; }
+  .day-cell { background: var(--ink); color: var(--white); padding: 1.25rem 1rem; border-radius: 3px; }
+  .day-name { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .day-cell p { font-size: 0.82rem; color: rgba(255,255,255,0.75); }
+
+  /* ===== DECISION TABLE ===== */
+  .decision-tbl { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.9rem; }
+  .decision-tbl th { background: var(--accent); color: var(--white); padding: 0.9rem 1rem; text-align: center; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .decision-tbl th:first-child { text-align: left; }
+  .decision-tbl td { border: 1px solid var(--rule); padding: 0.85rem 1rem; vertical-align: top; text-align: center; color: var(--ink-soft); }
+  .decision-tbl td:first-child { font-weight: 600; text-align: left; color: var(--ink); background: var(--accent-lt); }
+  .decision-tbl tr:last-child td { background: var(--accent); color: var(--white); font-weight: 700; }
+  .decision-tbl tr:last-child td:first-child { background: var(--accent); color: var(--white); }
+
+  /* ===== MAKERS / MANAGERS ===== */
+  .mm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+  .mm-card { background: var(--ink); padding: 2rem; border-radius: 4px; }
+  .mm-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+  .mm-sub { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+  .mm-card p { color: rgba(255,255,255,0.78); font-size: 0.92rem; }
+
+  /* ===== TALENT CARDS ===== */
+  .talent-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin: 1.5rem 0; }
+  .talent-card { background: var(--ink); padding: 1.5rem; border-radius: 4px; text-align: center; }
+  .talent-card .t-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 0.5rem; }
+  .talent-card .t-arrow { font-size: 1.5rem; color: var(--gold); margin: 0.5rem 0; }
+  .talent-card p { color: rgba(255,255,255,0.75); font-size: 0.85rem; }
+
+  /* ===== FOLLOW-UP STRATEGY ===== */
+  .followup-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin: 1.5rem 0; }
+  .fu-card { background: var(--ink); padding: 1.5rem; border-radius: 4px; text-align: center; }
+  .fu-num { font-size: 1.5rem; font-weight: 900; color: var(--gold); font-family: 'Playfair Display', serif; margin-bottom: 0.35rem; }
+  .fu-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 0.5rem; }
+  .fu-card .fu-arrow { font-size: 1.2rem; color: var(--gold); margin: 0.4rem 0; }
+  .fu-card p { color: rgba(255,255,255,0.75); font-size: 0.85rem; font-style: italic; }
+
+  /* ===== HACKATHON WHY ===== */
+  .why-grid { display: grid; gap: 1px; margin: 2rem 0; background: var(--rule); }
+  .why-row {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center; gap: 1.5rem;
+    background: var(--white);
+    padding: 1.25rem 1.5rem;
+  }
+  .why-label { font-weight: 700; color: var(--accent); font-size: 0.95rem; text-align: right; }
+  .why-arrow { color: var(--gold); font-size: 1.4rem; }
+  .why-result { font-size: 0.9rem; color: var(--ink-soft); }
+
+  /* ===== ACTION STEP ===== */
+  .action-box {
+    background: var(--ink);
+    color: var(--white);
+    padding: 4rem 2.5rem;
+    text-align: center;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+  .action-icon {
+    width: 60px; height: 60px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.4rem;
+  }
+  .action-box h3 { color: var(--gold); font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; }
+  .action-box p { font-size: 1.1rem; line-height: 1.7; color: rgba(255,255,255,0.88); max-width: 560px; margin: 0 auto; }
+
+  /* ===== WRITE LINES ===== */
+  .write-area { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 1.5rem 1.75rem; margin: 1rem 0; }
+  .write-line { border-bottom: 1px solid var(--paper-alt); height: 2.6rem; }
+  .write-label { font-size: 0.78rem; font-weight: 600; color: var(--ink-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
+
+  /* ===== JOB DESC ===== */
+  .jd-grid { display: grid; gap: 0; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+  .jd-row { display: grid; grid-template-columns: 220px 1fr; border-bottom: 1px solid var(--rule); }
+  .jd-row:last-child { border-bottom: none; }
+  .jd-key { background: var(--accent-lt); padding: 1.5rem 1.25rem; font-weight: 600; font-size: 0.9rem; color: var(--accent); display: flex; align-items: flex-start; }
+  .jd-val { background: var(--white); padding: 1.5rem 1.25rem; min-height: 90px; }
+
+  /* ===== ONBOARDING PHASES ===== */
+  .phase-header { background: var(--accent); color: var(--white); padding: 1.25rem 1.75rem; border-radius: 4px 4px 0 0; }
+  .phase-header .ph-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+  .phase-header h3 { color: var(--white); font-size: 1.3rem; }
+  .phase-header .ph-focus { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 0.25rem; }
+  .phase-body { background: var(--white); border: 1px solid var(--rule); border-top: none; border-radius: 0 0 4px 4px; padding: 1.75rem; margin-bottom: 2rem; }
+
+  /* ===== 1:1 TEMPLATE ===== */
+  .meeting-template { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
+  .mt-header { background: var(--accent); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+  .mt-header span { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+  .mt-header p { font-size: 0.82rem; color: rgba(255,255,255,0.7); }
+  .mt-body { padding: 2rem; }
+  .mt-section { margin-bottom: 1.75rem; }
+  .mt-section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+
+  /* ===== FREQ DURATION CARDS ===== */
+  .freq-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin: 2rem 0; }
+  .freq-card { background: var(--ink); padding: 2rem 1.5rem; border-radius: 4px; text-align: center; }
+  .freq-card .fc-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--gold); margin-bottom: 0.35rem; }
+  .freq-card h4 { color: var(--gold-lt); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Inter', sans-serif; margin-bottom: 0.75rem; }
+  .freq-card .fc-arrow { font-size: 1.3rem; color: var(--gold); margin: 0.5rem 0; }
+  .freq-card p { color: rgba(255,255,255,0.75); font-size: 0.88rem; }
+
+  /* ===== MISTAKES TABLE ===== */
+  .mistakes-box { background: var(--accent); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
+  .mistakes-hdr { padding: 0.9rem 1.5rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .mistake-row { padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .mistake-row:last-child { border-bottom: none; }
+  .mistake-row strong { color: var(--gold-lt); display: block; font-size: 0.88rem; margin-bottom: 0.2rem; }
+  .mistake-row p { color: rgba(255,255,255,0.72); font-size: 0.85rem; }
+
+  /* ===== HIRE PITFALLS ===== */
+  .pitfall-grid { display: grid; gap: 1.5rem; margin: 2rem 0; }
+  .pitfall-row { display: grid; grid-template-columns: 260px auto 1fr; align-items: center; gap: 1.5rem; }
+  .pitfall-label { font-weight: 700; color: var(--white); text-align: right; font-size: 0.95rem; line-height: 1.3; }
+  .pitfall-arrow { color: var(--gold); font-size: 1.4rem; }
+  .pitfall-result { color: rgba(255,255,255,0.75); font-size: 0.9rem; }
+
+  /* ===== REMOTE WS ===== */
+  .remote-tbl { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.88rem; }
+  .remote-tbl th { background: var(--accent); color: var(--white); padding: 0.9rem 1rem; text-align: center; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .remote-tbl th:first-child { text-align: left; }
+  .remote-tbl td { border: 1px solid var(--rule); padding: 0.9rem 1rem; color: var(--ink-soft); vertical-align: top; text-align: center; }
+  .remote-tbl td:first-child { font-weight: 600; color: var(--accent); text-align: left; background: var(--accent-lt); }
+
+  /* ===== RALSTON SELECT / PRODUCT ===== */
+  .product-feature { display: grid; grid-template-columns: 60px 1fr; gap: 1.25rem; padding: 1.5rem; background: rgba(255,255,255,0.06); border-radius: 4px; margin-bottom: 1rem; }
+  .product-feature-icon { width: 44px; height: 44px; background: rgba(184,150,62,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+  .product-feature h4 { color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.92rem; margin-bottom: 0.25rem; }
+  .product-feature p { font-size: 0.85rem; }
+  .cta-btn {
+    display: block; text-align: center;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.1rem 2rem;
+    border-radius: 3px;
+    margin-top: 2rem;
+  }
+
+  /* ===== INLINE EXAMPLE 2-COL ===== */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 1.5rem 0; }
+  .two-col-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+
+  /* ===== PRINCIPLE TAGS ===== */
+  .principle-list { display: flex; flex-direction: column; gap: 1.25rem; margin: 1.5rem 0; }
+  .principle-item { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; }
+  .principle-badge {
+    background: var(--accent-lt);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.3rem 0.75rem; border-radius: 2px; white-space: nowrap;
+  }
+  .principle-item p { font-size: 0.93rem; color: var(--ink-soft); }
+
+  /* ===== FINAL CLOSURE ===== */
+  .closer { background: var(--ink); color: var(--white); padding: 100px 24px; text-align: center; }
+  .closer-inner { max-width: 600px; margin: 0 auto; }
+  .closer h2 { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1.5rem; }
+  .closer p { color: rgba(255,255,255,0.8); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; }
+  .closer .sign-off { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.4rem; color: var(--gold-lt); margin-top: 2rem; }
+  .brand-mark { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--gold); margin-bottom: 0.25rem; }
+  .brand-url { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+  /* ===== HELPERS ===== */
+  .mt-0 { margin-top: 0 !important; }
+  .mt-1 { margin-top: 1rem !important; }
+  .mt-2 { margin-top: 2rem !important; }
+  .mb-2 { margin-bottom: 2rem !important; }
+  .text-center { text-align: center; }
+  .italic { font-style: italic; }
+  .bold { font-weight: 700; }
+  .small { font-size: 0.82rem; }
+  .example-note { font-size: 0.88rem; color: var(--ink-muted); font-style: italic; margin: 1rem 0; }
+  .example-note strong { color: var(--accent); font-style: normal; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 700px) {
+    .cards-3, .story-3, .followup-3, .talent-row, .freq-3, .cards-2, .mm-grid { grid-template-columns: 1fr; }
+    .week-cal { grid-template-columns: 1fr 1fr; }
+    .why-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .why-label { text-align: left; }
+    .pitfall-row { grid-template-columns: 1fr; }
+    .pitfall-label { text-align: left; }
+    .jd-row { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .obj-box { grid-template-columns: 1fr; }
+    .obj-label { writing-mode: horizontal-tb; transform: none; padding: 0.75rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER ==================== -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">Professional Brand Building System</div>
+    <h1>How To<br><span>Build Your Brand</span></h1>
+    <div class="cover-sub">Workbook</div>
+    <div class="cover-author">
+      By
+      <strong>Zain Bashir</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CONTENTS ==================== -->
+<div class="section section-alt">
+  <div class="page-wrap">
+    <div class="tag mb-2">Table of Contents</div>
+    <h2 style="margin-bottom:2.5rem;">Contents</h2>
+
+    <div class="toc-grid">
+      <div class="toc-item">
+        <div>
+          <div class="toc-chapter">Chapter 01</div>
+          <div class="toc-title">Define Your Brand</div>
+          <div class="toc-sub">Brand Journey Framework Worksheet</div>
+        </div>
+        <div class="toc-page">5</div>
+      </div>
+      <div class="toc-item">
+        <div>
+          <div class="toc-chapter">Chapter 02</div>
+          <div class="toc-title">The Brand Story Framework</div>
+          <div class="toc-sub">Brand Story Worksheet</div>
+        </div>
+        <div class="toc-page">7</div>
+      </div>
+      <div class="toc-item">
+        <div>
+          <div class="toc-chapter">Chapter 03</div>
+          <div class="toc-title">Your Posting Cadence</div>
+          <div class="toc-sub">Waterfall Distribution Method Playbook · Filming Environment Playbook</div>
+        </div>
+        <div class="toc-page">11</div>
+      </div>
+      <div class="toc-item">
+        <div>
+          <div class="toc-chapter">Chapter 04</div>
+          <div class="toc-title">Storytelling in Your Content</div>
+          <div class="toc-sub">Storytelling Playbook</div>
+        </div>
+        <div class="toc-page">19</div>
+      </div>
+      <div class="toc-item">
+        <div>
+          <div class="toc-chapter">Chapter 05</div>
+          <div class="toc-title">Create Space for Experimentation</div>
+          <div class="toc-sub">Content Hackathon Playbook</div>
+        </div>
+        <div class="toc-page">23</div>
+      </div>
+      <div class="toc-item">
+        <div>
+          <div class="toc-chapter">Chapter 06</div>
+          <div class="toc-title">Streamline Your Hiring Process</div>
+          <div class="toc-sub">Job Description Worksheet</div>
+        </div>
+        <div class="toc-page">27</div>
+      </div>
+      <div class="toc-item">
+        <div>
+          <div class="toc-chapter">Chapter 07</div>
+          <div class="toc-title">Hiring Process</div>
+          <div class="toc-sub">Hiring Funnel Playbook</div>
+        </div>
+        <div class="toc-page">33</div>
+      </div>
+      <div class="toc-item">
+        <div>
+          <div class="toc-chapter">Chapter 08</div>
+          <div class="toc-title">Full-Time Employees vs Contractors &amp; Agencies</div>
+          <div class="toc-sub">Full-Time Employees vs Contractors/Agencies Worksheet</div>
+        </div>
+        <div class="toc-page">37</div>
+      </div>
+      <div class="toc-item">
+        <div>
+          <div class="toc-chapter">Chapter 09</div>
+          <div class="toc-title">Onboard Your Team Effectively</div>
+          <div class="toc-sub">30/60/90 Day Onboarding Worksheet</div>
+        </div>
+        <div class="toc-page">41</div>
+      </div>
+      <div class="toc-item">
+        <div>
+          <div class="toc-chapter">Chapter 10</div>
+          <div class="toc-title">Develop and Retain Your High Performing Team</div>
+          <div class="toc-sub">Effective 1:1 Playbook</div>
+        </div>
+        <div class="toc-page">47</div>
+      </div>
+      <div class="toc-item">
+        <div>
+          <div class="toc-chapter">Chapter 11</div>
+          <div class="toc-title">Build a Strong Team Culture</div>
+          <div class="toc-sub">Maker vs Manager Schedule Playbook · Remote vs In-Person vs Hybrid Worksheet</div>
+        </div>
+        <div class="toc-page">53</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== INTRODUCTION ==================== -->
+<div class="section section-ink">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:2rem;">Consider reading this before going further.</h2>
+    <div class="intro-block">
+      <p>Hey there. Hi — I'm grateful you downloaded this workbook. If you're here, you're probably trying to build a brand but feeling stuck. Maybe you don't know where to start, maybe your content isn't actually growing your brand, or maybe you've built something, but it's not converting the way it should.</p>
+      <p>This workbook is designed to be paired with my <strong>How to Build a Brand Course.</strong> Simply click the hyperlink to view the course, completely free.</p>
+      <p>I know your time and attention are valuable, and I don't take that lightly. That's exactly why I made this workbook. No more just watching videos and hoping something clicks — this is about taking action, driving real results, and producing a strong ROI on your time.</p>
+      <p>If you follow the course, fill out the worksheets, and review the playbooks you'll have a clear game plan to build something real.</p>
+      <p class="intro-italic" style="margin-top:1.5rem;">Let's get into it.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 01 DIVIDER ==================== -->
+<div class="chapter-divider" data-num="01">
+  <div class="chapter-divider-inner">
+    <div class="chapter-num">Chapter 01</div>
+    <h2>Define<br>Your Brand</h2>
+  </div>
+</div>
+
+<!-- ==================== CH01 CONTENT ==================== -->
+<div class="section">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:0.5rem;">Brand Journey Framework Worksheet</h2>
+    <hr class="rule-h">
+
+    <div class="obj-box">
+      <div class="obj-label">Objective</div>
+      <div class="obj-content">
+        <p>Building a brand isn't about guesswork — it's about intentional strategy. The Brand Journey Framework simplifies this process into four key questions that help you reverse-engineer your success. Instead of aimlessly creating content or hoping your brand takes off, this exercise ensures that every action you take aligns with your long-term vision.</p>
+        <p>By answering these four questions, you'll gain clarity on:</p>
+        <ul class="bullet-list">
+          <li>The ultimate goal you're working toward</li>
+          <li>The reputation and positioning you need to achieve it</li>
+          <li>The actions required to reinforce that reputation</li>
+          <li>The skills and knowledge necessary to execute effectively</li>
+        </ul>
+        <p style="margin-top:0.75rem;">This isn't just a thought exercise — it's a roadmap. Follow it, and you'll build a brand with purpose, consistency, and long-term impact.</p>
+      </div>
+    </div>
+
+    <div class="example-hdr" style="border-radius:4px 4px 0 0; margin-top:2rem;">Exercise</div>
+    <div style="background:var(--white);border:1px solid var(--rule);border-top:none;border-radius:0 0 4px 4px;">
+      <table class="ex-table" style="margin:0;">
+        <tr>
+          <td class="q-cell">What do I want to<br>have happen?</td>
+          <td class="a-cell"></td>
+        </tr>
+        <tr>
+          <td class="q-cell">What do I have to be<br>known for in order for<br>that to happen?</td>
+          <td class="a-cell"></td>
+        </tr>
+        <tr>
+          <td class="q-cell">What do I have to do in<br>order to be known for<br>that?</td>
+          <td class="a-cell"></td>
+        </tr>
+        <tr>
+          <td class="q-cell">What do I have to learn<br>in order to do those<br>things?</td>
+          <td class="a-cell"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 02 DIVIDER ==================== -->
+<div class="chapter-divider" data-num="02">
+  <div class="chapter-divider-inner">
+    <div class="chapter-num">Chapter 02</div>
+    <h2>The<br>Brand Story<br>Framework</h2>
+  </div>
+</div>
+
+<!-- ==================== CH02 CONTENT ==================== -->
+<div class="section">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:0.5rem;">Brand Story Worksheet</h2>
+    <hr class="rule-h">
+
+    <div class="obj-box">
+      <div class="obj-label">Objective</div>
+      <div class="obj-content">
+        <p>Your brand story isn't just a before-and-after transformation — it's a series of intentional decisions that shape how people see you. Great brands aren't built on a single moment — they're built on consistency, distinction, and the right audience connections over time. This worksheet will help you craft a brand story that evolves and remains relevant.</p>
+      </div>
+    </div>
+
+    <div class="example-hdr" style="margin-top:2rem;">Exercise</div>
+    <div style="background:var(--white);border:1px solid var(--rule);border-top:none;border-radius:0 0 4px 4px;padding:2rem;">
+      <h3 style="margin-bottom:1.5rem;">The 3-Part Brand Story Framework</h3>
+
+      <h4 style="color:var(--accent);margin-bottom:0.75rem;">01. The Catalyst (Why Your Brand Exists &amp; Why It Matters)</h4>
+      <p>Every brand starts because something needed to change. This isn't always a struggle — sometimes it's an opportunity no one else saw.</p>
+      <p class="example-note" style="margin-top:0.75rem;"><strong>Example:</strong> Nike didn't start because Phil Knight wanted to be rich — it started because he saw a gap in performance shoes.</p>
+      <p class="bold" style="font-size:0.88rem;margin-top:1rem;color:var(--ink);">Ask Yourself:</p>
+      <ul class="bullet-list">
+        <li>What needs to change?</li>
+        <li>What do you see that others didn't?</li>
+        <li>Why do you feel the need to act?</li>
+      </ul>
+      <div class="write-label mt-1">Your Answer:</div>
+      <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+
+      <hr class="rule-h">
+
+      <h4 style="color:var(--accent);margin-bottom:0.75rem;">02. The Core Truth (What Makes You Different &amp; Why People Should Care)</h4>
+      <p>A strong brand stands out — it doesn't blend in. Blending in leads to being forgotten. This doesn't mean being controversial for controversy's sake — it means having a core conviction that is different from the market and sharing that.</p>
+      <p class="example-note" style="margin-top:0.75rem;"><strong>Example:</strong> The artist Russ believes that artists should own their music and stay independent to maintain creative control and be fairly paid. He reinforces this belief through his music and press interviews.</p>
+      <p class="bold" style="font-size:0.88rem;margin-top:1rem;color:var(--ink);">Ask Yourself:</p>
+      <ul class="bullet-list">
+        <li>What do I believe that others don't?</li>
+        <li>What about my personality stands out?</li>
+        <li>What do people compliment me on that I can lean into?</li>
+        <li>Why would the audience care about this?</li>
+      </ul>
+      <div class="write-label mt-1">Your Answer:</div>
+      <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+
+      <hr class="rule-h">
+
+      <h4 style="color:var(--accent);margin-bottom:0.75rem;">03. The Proof (How You Reinforce Your Identity Over Time)</h4>
+      <p>A story isn't what you say — it's what you prove over and over again. Strong brands don't just have a past success story — they have an ongoing pattern of credibility.</p>
+      <p class="example-note" style="margin-top:0.75rem;"><strong>Example:</strong> GaryVee didn't just talk about content volume once — he's proven it for 15+ years.</p>
+      <p class="bold" style="font-size:0.88rem;margin-top:1rem;color:var(--ink);">Ask Yourself:</p>
+      <ul class="bullet-list">
+        <li>How does every piece of content reinforce the associations I want people to make with me?</li>
+        <li>What case studies or examples can I share to establish credibility?</li>
+        <li>If someone hears my name, what's the first thing I want them to think of?</li>
+      </ul>
+      <div class="write-label mt-1">Your Answer:</div>
+      <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+    </div>
+
+    <!-- Example visual -->
+    <div class="example-hdr mt-2">Example</div>
+    <div class="example-body">
+      <h3 style="margin-bottom:1.5rem;">Zain's Brand Story Using This Framework</h3>
+      <div class="story-3">
+        <div class="story-col">
+          <div class="story-num">01</div>
+          <div class="story-title">The Catalyst</div>
+          <p>I saw brands scaling content views but struggling to build brand trust. The problem wasn't content — it was clarity on the big picture strategy.</p>
+        </div>
+        <div class="story-col">
+          <div class="story-num">02</div>
+          <div class="story-title">The Core Truth</div>
+          <p>A strong brand is built by the intentional pairing of relevant things, done consistently — not just by going viral.</p>
+        </div>
+        <div class="story-col">
+          <div class="story-num">03</div>
+          <div class="story-title">The Proof</div>
+          <p>I've built brands that scale businesses to many millions in revenue — and I show exactly how I do it, for free.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin:2rem 0 1.5rem;">
+        <div style="font-size:2rem;color:var(--gold);">↓</div>
+        <h3 style="margin-top:1rem;">Build Your Brand Story in 3 Simple Steps</h3>
+      </div>
+      <div class="cards-3">
+        <div class="card">
+          <div class="card-num">01</div>
+          <h4>The Catalyst</h4>
+          <p>What did you see that others didn't?</p>
+        </div>
+        <div class="card">
+          <div class="card-num">02</div>
+          <h4>The Core Truth</h4>
+          <p>What's the belief you have that others may not?</p>
+        </div>
+        <div class="card">
+          <div class="card-num">03</div>
+          <h4>The Proof</h4>
+          <p>How do you reinforce that identity every day, not only through statements but actions?</p>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:1.5rem;">If you <strong>nail these</strong>, your brand won't just have a story — it'll have a <strong>clear identity</strong> that people <strong>actually remember.</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 03 DIVIDER ==================== -->
+<div class="chapter-divider" data-num="03">
+  <div class="chapter-divider-inner">
+    <div class="chapter-num">Chapter 03</div>
+    <h2>Your<br>Posting<br>Cadence</h2>
+  </div>
+</div>
+
+<!-- ==================== CH03 CONTENT ==================== -->
+<div class="section">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:0.5rem;">Waterfall Distribution Method Playbook</h2>
+    <hr class="rule-h">
+
+    <div class="obj-box">
+      <div class="obj-label">Objective</div>
+      <div class="obj-content">
+        <p>The Waterfall Distribution Method is the most effective way to maximize content output and increase brand reach without reinventing the wheel. This strategy ensures that one piece of content fuels multiple platforms, making your content work harder for you. Originally popularized by GaryVee, this method has been refined over time into a repeatable system that turns a single high-value content piece into weeks of strategic distribution.</p>
+        <p style="margin-top:0.75rem;">This playbook will guide you through:</p>
+        <ol class="num-list" style="margin-top:0.5rem;">
+          <li><strong>Identifying your pillar content</strong> (the foundational piece that starts the process)</li>
+          <li><strong>Extracting micro-content</strong> to repurpose for multiple platforms</li>
+          <li><strong>Breaking down formats</strong> to match audience expectations</li>
+          <li><strong>Distributing strategically</strong> to maximize engagement and reach</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 01</span></div>
+      <h3>Identify Your Pillar Content</h3>
+      <p>Your pillar content is the foundation of your content strategy. It should be high-value, long-form, and packed with insights.</p>
+      <p class="bold mt-1" style="color:var(--ink);">Examples of Pillar Content:</p>
+      <ul class="bullet-list">
+        <li>A <strong>YouTube long-form video</strong> (12+ minutes with deep insights)</li>
+        <li>A <strong>high-value Twitter thread</strong> that breaks down a concept</li>
+        <li>A <strong>newsletter issue</strong> that teaches a framework</li>
+        <li>A <strong>long-form LinkedIn post</strong> sharing detailed strategy</li>
+        <li>A <strong>podcast episode</strong> featuring expert discussion</li>
+      </ul>
+      <p class="bold mt-1" style="color:var(--ink);">Key Question to Ask:</p>
+      <div style="background:var(--gold-pale);border-left:3px solid var(--gold);padding:1rem 1.25rem;margin:0.75rem 0;border-radius:0 3px 3px 0;">
+        <p class="italic" style="color:var(--accent-md);">If my audience only consumed one piece of my content per week, what would I want it to be?</p>
+      </div>
+      <p>Your pillar content should be evergreen or highly relevant to your niche so that repurposing it over time still provides value.</p>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 02</span></div>
+      <h3>Extract Micro-Content (Mining for Gold)</h3>
+      <p>Once you've created your pillar content, the next step is to break it down into smaller, digestible pieces for distribution across multiple platforms.</p>
+      <p class="bold mt-1" style="color:var(--ink);">How to Find Micro-Content:</p>
+      <ul class="bullet-list">
+        <li><strong>Identify the most valuable 30-60 second clips</strong> from a long-form video or podcast</li>
+        <li><strong>Pull out standout quotes</strong> that could be shared as tweets or LinkedIn posts</li>
+        <li><strong>Summarize the key takeaways</strong> into a text-based format</li>
+        <li><strong>Find controversial or contrarian takes</strong> that could spark engagement</li>
+      </ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 03</span></div>
+      <h3>Break Down Formats for Each Platform</h3>
+      <p>Each platform has its own content style, audience behavior, and best practices. Your content should feel native to each platform while maintaining the core message.</p>
+      <p class="bold mt-1" style="color:var(--ink);">Example Platform Breakdown:</p>
+      <ul class="bullet-list">
+        <li><strong>YouTube Shorts, TikTok, Reels:</strong> 30-120 second clips pulled from your long-form video</li>
+        <li><strong>Twitter/X:</strong> Break down insights into a thread (5-10 tweets max)</li>
+        <li><strong>LinkedIn:</strong> Turn the core idea into a written post or a carousel</li>
+        <li><strong>Instagram Stories:</strong> Share quick takeaways with engaging visuals</li>
+        <li><strong>Email Newsletter:</strong> Package insights from the original content into an email sequence</li>
+      </ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 04</span></div>
+      <h3>Strategic Distribution Plan</h3>
+      <p>To make this process efficient, systematize your workflow so that content is consistently distributed.</p>
+      <p class="bold mt-1" style="color:var(--ink);">The Waterfall Process:</p>
+      <ol class="num-list">
+        <li><strong>Post your pillar content first</strong> (YouTube, podcast, long-form post)</li>
+        <li><strong>Within 24-48 hours</strong>, schedule micro-content across secondary platforms</li>
+        <li><strong>Engage &amp; iterate</strong> — monitor audience responses and double down on what's working</li>
+        <li><strong>Repurpose winners</strong> — take high-performing content and find ways to expand on it</li>
+      </ol>
+      <p class="bold mt-2" style="color:var(--ink);">Pro Tip: Create a Content Calendar</p>
+      <p style="margin-bottom:1rem;">Use a simple structure like:</p>
+      <div class="week-cal">
+        <div class="day-cell"><div class="day-name">Monday</div><p>Post pillar content</p></div>
+        <div class="day-cell"><div class="day-name">Tuesday</div><p>Twitter thread + LinkedIn post</p></div>
+        <div class="day-cell"><div class="day-name">Wednesday</div><p>Instagram carousel + YouTube short</p></div>
+        <div class="day-cell"><div class="day-name">Thursday</div><p>TikTok/Reels video + second LinkedIn post</p></div>
+        <div class="day-cell"><div class="day-name">Friday</div><p>Email newsletter + engagement on platforms</p></div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:1rem;">Final Thoughts: Why This Works</h3>
+    <p class="bold" style="color:var(--ink);">The Waterfall Distribution Method ensures:</p>
+    <ul class="bullet-list">
+      <li>You don't waste content — every piece has multiple uses</li>
+      <li>You increase visibility — your audience sees your message multiple times in different formats</li>
+      <li>You stay top of mind — repetition reinforces brand associations</li>
+    </ul>
+    <p class="mt-1">If you execute this properly, one piece of content fuels an entire week (or more).</p>
+
+    <div class="action-box">
+      <div class="action-icon">!</div>
+      <h3>Action Step</h3>
+      <p>Implement this system for your next content piece and track engagement across platforms. The more you refine this process, the more impact your brand will have.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Filming Environment Playbook -->
+<div class="section section-alt">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:0.5rem;">Filming Environment Playbook</h2>
+    <hr class="rule-h">
+
+    <div class="obj-box">
+      <div class="obj-label">Objective</div>
+      <div class="obj-content">
+        <p>Create an efficient, repeatable system for filming high-quality content that ensures the best performance from both the talent and the production team. This playbook covers filming environments, talent management, follow-up questions, and overall best practices to optimize every shoot.</p>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 01</span></div>
+      <h3>Pre-Filming Preparation</h3>
+      <h4 style="margin-bottom:0.75rem;color:var(--ink);">Gear Checklist</h4>
+      <p>Ensure all required equipment is packed and fully functional before arriving on set:</p>
+      <ul class="bullet-list mt-1">
+        <li><strong>Camera body + Versatile lens</strong> (Recommended: 24-70mm for flexibility)</li>
+        <li><strong>SD Cards:</strong>
+          <ul class="bullet-list sub-list">
+            <li>Talking Head/Podcast: 1 TB SD Card (1x minimum)</li>
+            <li>Vlogging: 2 TB SD Card (2x – to avoid storage issues)</li>
+          </ul>
+        </li>
+        <li><strong>Batteries (Fully Charged!)</strong>
+          <ul class="bullet-list sub-list">
+            <li>Talking Head/Podcast: 3 Camera Batteries Minimum</li>
+            <li>Vlogging: 5 Camera Batteries Minimum</li>
+            <li>Lav Mic System (Transmitter &amp; Receiver): 3+ Batteries Each</li>
+          </ul>
+        </li>
+        <li><strong>Tripod + Plate</strong> (Ensure Attached to Camera Before Arriving)</li>
+        <li><strong>In-ear Headphones</strong> (for monitoring audio clarity)</li>
+        <li><strong>Lav Mic System</strong> (Receiver, Transmitter, Lav Mic)</li>
+        <li><strong>Chargers</strong> (If Filming for Extended Periods)</li>
+      </ul>
+      <div style="background:var(--gold-pale);border-left:3px solid var(--gold);padding:1rem 1.25rem;margin:1.25rem 0;border-radius:0 3px 3px 0;">
+        <p><strong>Pro Tip:</strong> Bring snacks, drinks, and small comfort items for the talent. Before filming, ask them what their go-to drink, snack, or essentials are (lip balm, nicotine gum, etc.). Small details build trust and improve performance.</p>
+      </div>
+      <h4 style="margin-bottom:0.75rem;color:var(--ink);">Camera Settings</h4>
+      <ul class="bullet-list">
+        <li><strong>Frame Rate:</strong> 24fps (for a cinematic look)</li>
+        <li><strong>White Balance:</strong> Auto (for vlogs), Manual (for controlled shoots)</li>
+        <li><strong>Audio Levels:</strong> Check lav mic clarity in headphones before filming starts</li>
+        <li><strong>Image Stabilization:</strong> Ensure it's enabled</li>
+        <li><strong>Exposure:</strong> Adjust per environment — never assume it's set correctly</li>
+      </ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 02</span></div>
+      <h3>Filming Environment Optimization</h3>
+      <h4 style="margin-bottom:0.75rem;color:var(--ink);">Lighting</h4>
+      <ul class="bullet-list">
+        <li><strong>Indoor:</strong> Position lights to remove harsh shadows; avoid overhead lighting unless diffused</li>
+        <li><strong>Outdoor:</strong> Aim for golden hour or overcast conditions. Direct sunlight can create harsh shadows</li>
+        <li><strong>Consistency:</strong> Maintain uniform lighting across shots for continuity</li>
+      </ul>
+      <h4 style="margin:1rem 0 0.75rem;color:var(--ink);">Audio</h4>
+      <ul class="bullet-list">
+        <li><strong>Lav Mic Positioning:</strong> Attach securely, minimizing clothing rustle</li>
+        <li><strong>Background Noise:</strong> Avoid busy environments. Run a test recording before starting</li>
+        <li><strong>Backup Audio:</strong> If possible, record using two separate mic sources (lav + shotgun/boom mic)</li>
+      </ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 03</span></div>
+      <h3>Talent Management &amp; Maximizing Performance</h3>
+      <h4 style="margin-bottom:0.75rem;color:var(--ink);">First 5-10 Minutes: Setting the Tone</h4>
+      <p>You dictate the energy of the filming day. <strong>Be the thermostat,</strong> not the <em>thermometer.</em></p>
+      <ul class="bullet-list mt-1">
+        <li>Walk in with positive energy</li>
+        <li>Break tension by making a small joke, playful greeting, or lighthearted comment</li>
+        <li>Pay attention to talent's energy level and mood (adjust accordingly)</li>
+      </ul>
+      <h4 style="margin:1.5rem 0 1rem;color:var(--ink);">Assess Talent's Energy:</h4>
+      <div class="talent-row">
+        <div class="talent-card">
+          <div class="t-title">Conversational Mood?</div>
+          <div class="t-arrow">↓</div>
+          <p>Lean into follow-up questions and interactions</p>
+        </div>
+        <div class="talent-card">
+          <div class="t-title">Focused Mode?</div>
+          <div class="t-arrow">↓</div>
+          <p>Take a "fly on the wall" approach; avoid interruptions</p>
+        </div>
+        <div class="talent-card">
+          <div class="t-title">Tired?</div>
+          <div class="t-arrow">↓</div>
+          <p>Boost energy with nonverbal cues (bigger reactions, head nods, fist bumps)</p>
+        </div>
+      </div>
+      <h4 style="margin:1.5rem 0 1rem;color:var(--ink);">Keeping Talent Engaged:</h4>
+      <div class="talent-row">
+        <div class="talent-card">
+          <div class="t-title">Give Visual Cues</div>
+          <div class="t-arrow">↓</div>
+          <p>Nod when they say something powerful, smile when appropriate</p>
+        </div>
+        <div class="talent-card">
+          <div class="t-title">Encourage Great Moments</div>
+          <div class="t-arrow">↓</div>
+          <p>Acknowledge strong soundbites with a quick high-five or fist bump</p>
+        </div>
+        <div class="talent-card">
+          <div class="t-title">Hydration &amp; Fuel</div>
+          <div class="t-arrow">↓</div>
+          <p>Hand them water or a protein bar if they seem tired</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 04</span></div>
+      <h3>Asking Follow-Up Questions for Deeper Content</h3>
+      <h4 style="margin-bottom:1rem;color:var(--ink);">How to Reverse-Engineer a Great Answer</h4>
+      <div class="two-col">
+        <div>
+          <div class="two-col-label">01. Scenario</div>
+          <p>Talent says something insightful</p>
+          <p style="margin-top:0.5rem;color:var(--gold);">↓</p>
+          <p>Follow up to extract more depth</p>
+        </div>
+        <div>
+          <div class="two-col-label">02. Example</div>
+          <p class="italic">Talent: "I can't believe we finally closed that deal with the CEO. We've been trying for six months."</p>
+        </div>
+      </div>
+      <div class="two-col-label mt-1">03. Follow-Up Strategy</div>
+      <div class="followup-3">
+        <div class="fu-card">
+          <div class="fu-num">01</div>
+          <div class="fu-title">Ask for Process Insights</div>
+          <div class="fu-arrow">↓</div>
+          <p>"What do you think changed that made them finally say yes?"</p>
+        </div>
+        <div class="fu-card">
+          <div class="fu-num">02</div>
+          <div class="fu-title">Challenge Universality</div>
+          <div class="fu-arrow">↓</div>
+          <p>"Would this approach work for any CEO, or was this specific to their company?"</p>
+        </div>
+        <div class="fu-card">
+          <div class="fu-num">03</div>
+          <div class="fu-title">Ask for Replicable Advice</div>
+          <div class="fu-arrow">↓</div>
+          <p>"If someone wanted to achieve the same outcome, what's the biggest thing they should focus on?"</p>
+        </div>
+      </div>
+      <div class="two-col mt-1">
+        <div>
+          <div class="two-col-label">Another Example:</div>
+          <p class="italic">Talent in a meeting: "I never make my top salesman the sales manager."</p>
+        </div>
+        <div>
+          <div class="two-col-label">Follow-ups:</div>
+          <p class="italic">"Why wouldn't your best salesperson make a great manager?"</p>
+          <p class="italic" style="margin-top:0.5rem;">"What are the three biggest skills that define a strong sales manager?"</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 05</span></div>
+      <h3>Filming Execution: Key Best Practices</h3>
+      <h4 style="margin-bottom:0.75rem;color:var(--ink);">Talking Head &amp; Podcast Filming</h4>
+      <ul class="bullet-list">
+        <li>Start Both A &amp; B Cameras at the Same Time</li>
+        <li>Film in Chunks (record long takes, avoid frequent stopping)</li>
+        <li>Capture Vertical Video on Phone (for repurposing into short-form content)</li>
+      </ul>
+      <h4 style="margin:1rem 0 0.75rem;color:var(--ink);">Vlogging Day</h4>
+      <ul class="bullet-list">
+        <li>Plan a Theme for the Day (Have 3-5 questions to shape the episode)</li>
+        <li>Keep Rolling During Key Events (longer, unbroken takes = better edits)</li>
+        <li>Pay Attention to Candid Moments (some of the best content is unscripted)</li>
+      </ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 06</span></div>
+      <h3>Post-Filming: Maximizing Impact</h3>
+      <h4 style="margin-bottom:0.75rem;color:var(--ink);">Immediate Follow-Up</h4>
+      <ul class="bullet-list">
+        <li>Give Talent a High Five/Fist Bump and mention 2-3 highlights from the shoot</li>
+        <li>Reinforce Positive Associations → "Today's shoot was 🔥. That segment on X is going to resonate HARD with the audience."</li>
+      </ul>
+      <h4 style="margin:1rem 0 0.75rem;color:var(--ink);">File Management &amp; Backup</h4>
+      <ul class="bullet-list">
+        <li>Ingest Footage Immediately → Copy files to hard drive + cloud storage</li>
+        <li>Send Talent a Quick Thank You Message</li>
+        <li>Post in Team Chat → Summarize key footage + upload locations</li>
+        <li>Charge All Batteries for Next Shoot</li>
+      </ul>
+      <div style="background:var(--gold-pale);border-left:3px solid var(--gold);padding:1rem 1.25rem;margin:1.25rem 0;border-radius:0 3px 3px 0;">
+        <p><strong>Final Pro Tip: Build Talent Trust</strong> — The more the talent trusts the filming process, the better their performance. Make every filming session positive, easy, and seamless. The more they enjoy the process, the better content you'll get.</p>
+      </div>
+    </div>
+
+    <div class="action-box">
+      <div class="action-icon">!</div>
+      <h3>Conclusion</h3>
+      <p>This playbook ensures that every film session is efficient, professional, and delivers maximum value. By optimizing filming environments, keeping talent engaged, and using powerful follow-up questioning, you can consistently create high-impact, engaging content. Implement these best practices and watch your filming sessions become smoother, more productive, and higher quality than ever before.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PRODUCT PAGE (Ralston Select) ==================== -->
+<div class="section section-dark">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:1rem;">Ralston Select</h2>
+    <p>If all of this feels overwhelming, or you're clear on the strategy but unsure how to implement it, that's exactly why we created <strong style="color:var(--gold-lt);">Ralston Select</strong>. It's built for the team supporting your personal brand, not just the person on camera, and it's our most accessible offer yet.</p>
+    <p style="margin-top:0.75rem;">This is about making content to get customers, not just rack up views. <strong style="color:var(--white);">Here's Everything You Get With Ralston Select:</strong></p>
+
+    <div style="margin-top:2rem;">
+      <div class="product-feature">
+        <div class="product-feature-icon">💻</div>
+        <div>
+          <h4>Monthly Live Feedback &amp; Training</h4>
+          <p>Monthly 60+ min live group session led by Zain Bashir's Content Director, Trevor Odom. Real content reviewed, refined, and improved.</p>
+        </div>
+      </div>
+      <div class="product-feature">
+        <div class="product-feature-icon">📋</div>
+        <div>
+          <h4>Full In-Depth Curriculum</h4>
+          <p>The most in-depth training on Pre-Production, Production, Post Production, and Platform Strategy for educational content.</p>
+        </div>
+      </div>
+      <div class="product-feature">
+        <div class="product-feature-icon">⭐</div>
+        <div>
+          <h4>Quarterly Sessions with Top Leaders</h4>
+          <p>Behind-the-scenes strategy from people doing this at scale. Not the faces of the brands you see though, the people in the trenches.</p>
+        </div>
+      </div>
+      <div class="product-feature">
+        <div class="product-feature-icon">❓</div>
+        <div>
+          <h4>Monthly "Ask Trevor Anything"</h4>
+          <p>Monthly 2 hour AMA with Ralston's Content Director, Trevor Odom. Bring real questions and get real time tactical answers.</p>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="cta-btn">Click Here for More Information</a>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 04 DIVIDER ==================== -->
+<div class="chapter-divider" data-num="04">
+  <div class="chapter-divider-inner">
+    <div class="chapter-num">Chapter 04</div>
+    <h2>Storytelling<br>in Your<br>Content</h2>
+  </div>
+</div>
+
+<!-- ==================== CH04 CONTENT ==================== -->
+<div class="section">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:0.5rem;">Storytelling Playbook</h2>
+    <hr class="rule-h">
+
+    <div class="obj-box">
+      <div class="obj-label">Objective</div>
+      <div class="obj-content">
+        <p>Storytelling isn't just a creative tool — it's a strategic weapon. In a world where attention is the most valuable currency, stories keep people hooked and create emotional connections that make your brand memorable. People don't remember facts — they remember how you made them feel.</p>
+        <p style="margin-top:0.75rem;">This playbook will break down:</p>
+        <ol class="num-list" style="margin-top:0.5rem;">
+          <li><strong>The structure of a compelling story</strong></li>
+          <li><strong>The best types of stories to tell</strong></li>
+          <li><strong>How to weave storytelling into different content formats</strong></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 01</span></div>
+      <h3>The Structure of a Compelling Story</h3>
+      <p>The best stories follow a clear framework to capture attention, build engagement, and drive action.</p>
+
+      <div style="margin-top:1.5rem;display:grid;gap:1.5rem;">
+        <div style="display:grid;grid-template-columns:1fr 2px 1fr;gap:1.5rem;align-items:start;">
+          <div>
+            <h4 style="color:var(--accent);margin-bottom:0.5rem;">01. The Hook (Get Attention Fast)</h4>
+            <p>Online, you have 2 seconds to grab attention. Start with a bold statement, a problem, or a question.</p>
+          </div>
+          <div style="background:var(--rule);"></div>
+          <div>
+            <p class="bold" style="color:var(--ink);margin-bottom:0.35rem;">Examples:</p>
+            <p class="italic">"I almost ruined my career in 2018 because of one mistake…"</p>
+            <p class="italic" style="margin-top:0.35rem;">"Are you tired of posting the same shit that never works?"</p>
+          </div>
+        </div>
+        <hr class="rule-h" style="margin:0;">
+        <div style="display:grid;grid-template-columns:1fr 2px 1fr;gap:1.5rem;align-items:start;">
+          <div>
+            <h4 style="color:var(--accent);margin-bottom:0.5rem;">02. The Problem (Set Up the Stakes)</h4>
+            <p>Conflict and tension make stories engaging. The problem should be specific and relatable to your audience.</p>
+          </div>
+          <div style="background:var(--rule);"></div>
+          <div>
+            <p class="bold" style="color:var(--ink);margin-bottom:0.35rem;">Example:</p>
+            <p class="italic">"I was working 14-hour days editing videos for GaryVee, but I still felt stuck…"</p>
+          </div>
+        </div>
+        <hr class="rule-h" style="margin:0;">
+        <div style="display:grid;grid-template-columns:1fr 2px 1fr;gap:1.5rem;align-items:start;">
+          <div>
+            <h4 style="color:var(--accent);margin-bottom:0.5rem;">03. The Journey (How You Overcame It)</h4>
+            <p>People resonate with progress, not perfection. Show the messy middle — the doubts, the failures, and the "almost quitting" moment.</p>
+          </div>
+          <div style="background:var(--rule);"></div>
+          <div>
+            <p class="bold" style="color:var(--ink);margin-bottom:0.35rem;">Example:</p>
+            <p class="italic">"I realized I was burning out because I was trying to do everything myself. That's when I made this shift…"</p>
+          </div>
+        </div>
+        <hr class="rule-h" style="margin:0;">
+        <div style="display:grid;grid-template-columns:1fr 2px 1fr;gap:1.5rem;align-items:start;">
+          <div>
+            <h4 style="color:var(--accent);margin-bottom:0.5rem;">04. The Lesson (Make It Useful)</h4>
+            <p>Every story should end with a clear takeaway. The lesson should tie back to your expertise and provide value.</p>
+          </div>
+          <div style="background:var(--rule);"></div>
+          <div>
+            <p class="bold" style="color:var(--ink);margin-bottom:0.35rem;">Example:</p>
+            <p class="italic">"Here's what I learned, and here's how you can apply it."</p>
+          </div>
+        </div>
+        <hr class="rule-h" style="margin:0;">
+        <div style="display:grid;grid-template-columns:1fr 2px 1fr;gap:1.5rem;align-items:start;">
+          <div>
+            <h4 style="color:var(--accent);margin-bottom:0.5rem;">05. The CTA (Turn Story into Action)</h4>
+            <p>Close with a simple, natural next step.</p>
+          </div>
+          <div style="background:var(--rule);"></div>
+          <div>
+            <p class="bold" style="color:var(--ink);margin-bottom:0.35rem;">Examples:</p>
+            <p class="italic">"If you're struggling with X, try Y today."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 02</span></div>
+      <h3>The Best Types of Stories to Tell</h3>
+      <p>Not all stories work equally well in content. The best ones fall into these categories:</p>
+
+      <div style="margin-top:1.5rem;display:grid;gap:1.25rem;">
+        <div style="display:grid;grid-template-columns:1fr 2px 1fr;gap:1.5rem;align-items:start;">
+          <div><h4 style="color:var(--accent);">01. Origin Stories (Why You Started)</h4><p>Why do you do what you do? What pivotal moment shaped your career?</p></div>
+          <div style="background:var(--rule);"></div>
+          <div><p class="bold" style="color:var(--ink);">Examples:</p><p class="italic">"I read Crush It! at 15 and knew I had to be in content creation."</p></div>
+        </div>
+        <hr class="rule-h" style="margin:0;">
+        <div style="display:grid;grid-template-columns:1fr 2px 1fr;gap:1.5rem;align-items:start;">
+          <div><h4 style="color:var(--accent);">02. Failure Stories (Relatability &amp; Trust)</h4><p>People trust vulnerability more than success. Talk about what went wrong and what you learned.</p></div>
+          <div style="background:var(--rule);"></div>
+          <div><p class="bold" style="color:var(--ink);">Example:</p><p class="italic">"I lost my biggest client because I didn't understand this one thing…"</p></div>
+        </div>
+        <hr class="rule-h" style="margin:0;">
+        <div style="display:grid;grid-template-columns:1fr 2px 1fr;gap:1.5rem;align-items:start;">
+          <div><h4 style="color:var(--accent);">03. Success Stories (Teach Through Proof)</h4><p>Show before &amp; after transformations. Highlight small wins that led to big results.</p></div>
+          <div style="background:var(--rule);"></div>
+          <div><p class="bold" style="color:var(--ink);">Example:</p><p class="italic">"How I took GaryVee's TikTok from 300K to 3.5M in 3 months."</p></div>
+        </div>
+        <hr class="rule-h" style="margin:0;">
+        <div style="display:grid;grid-template-columns:1fr 2px 1fr;gap:1.5rem;align-items:start;">
+          <div><h4 style="color:var(--accent);">04. Customer/Client Stories (Social Proof)</h4><p>Let your audience see themselves in your content.</p></div>
+          <div style="background:var(--rule);"></div>
+          <div><p class="bold" style="color:var(--ink);">Example:</p><p class="italic">"One of my coaching clients went from 0 to 100K followers in 90 days by using this strategy…"</p></div>
+        </div>
+        <hr class="rule-h" style="margin:0;">
+        <div style="display:grid;grid-template-columns:1fr 2px 1fr;gap:1.5rem;align-items:start;">
+          <div><h4 style="color:var(--accent);">05. Industry Stories (Position Yourself as a Thought Leader)</h4><p>Talk about trends, mistakes, and shifts in your industry.</p></div>
+          <div style="background:var(--rule);"></div>
+          <div><p class="bold" style="color:var(--ink);">Example:</p><p class="italic">"The way brands create content is changing — here's what no one is talking about…"</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-box">
+      <div class="action-icon">!</div>
+      <h3>Final Thoughts: Why Storytelling Works</h3>
+      <p>Stories grab attention and hold it. Stories create an emotional connection that makes people remember you. Stories make your content more engaging, shareable, and impactful. <strong style="color:var(--gold-lt);">Start integrating stories</strong> into your content today, and watch how it <strong style="color:var(--gold-lt);">transforms</strong> your <strong style="color:var(--gold-lt);">brand presence</strong> and <strong style="color:var(--gold-lt);">audience engagement.</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 05 DIVIDER ==================== -->
+<div class="chapter-divider" data-num="05">
+  <div class="chapter-divider-inner">
+    <div class="chapter-num">Chapter 05</div>
+    <h2>Create<br>Space for<br>Experimentation</h2>
+  </div>
+</div>
+
+<!-- ==================== CH05 CONTENT ==================== -->
+<div class="section section-alt">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:0.5rem;">Content Hackathon Playbook</h2>
+    <hr class="rule-h">
+
+    <div class="obj-box">
+      <div class="obj-label">Objective</div>
+      <div class="obj-content">
+        <p>A <strong>Content Hackathon</strong> is a dedicated day each quarter (or month) for the team to break out of routine content production and create entirely new formats and styles that wouldn't normally be produced. This practice fosters creativity, experimentation, and innovation, allowing the team to push creative limits and develop content that could become a new brand standard.</p>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 01</span></div>
+      <h3>Purpose &amp; Notification</h3>
+      <h4 style="margin-bottom:0.75rem;color:var(--ink);">Advance Planning &amp; Communication</h4>
+      <ul class="bullet-list">
+        <li>Announce the Content Hackathon at least one month in advance so the team can plan accordingly</li>
+        <li>Managers should work closely with their direct reports to ensure all regular tasks and deadlines are completed beforehand, allowing the entire team to dedicate their full energy to the hackathon</li>
+        <li>Make it clear that this day is fully blocked off for experimentation — no meetings, no client calls, no distractions</li>
+      </ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 02</span></div>
+      <h3>Hackathon Schedule &amp; Structure</h3>
+      <h4 style="margin-bottom:0.75rem;color:var(--ink);">Kickoff Meeting (9:00 – 9:15 AM)</h4>
+      <ul class="bullet-list">
+        <li>Set the tone: Emphasize that the focus is on creating content the team has never done before — this is about innovation, not just production</li>
+        <li>Go over the rules and expectations:</li>
+      </ul>
+      <div class="cards-3" style="margin-top:1rem;">
+        <div class="card"><p style="font-size:0.9rem;color:rgba(255,255,255,0.88);">No "safe" ideas — push boundaries.</p></div>
+        <div class="card"><p style="font-size:0.9rem;color:rgba(255,255,255,0.88);">Aim for one, max two pieces, per person</p></div>
+        <div class="card"><p style="font-size:0.9rem;color:rgba(255,255,255,0.88);">Be prepared to present and explain creative choices.</p></div>
+      </div>
+      <h4 style="margin:1.5rem 0 0.75rem;color:var(--ink);">Creation Period (9:15 AM – 4:00 PM)</h4>
+      <ul class="bullet-list">
+        <li>The team works on developing innovative content based on new formats, styles, or approaches</li>
+        <li>Encourage team members to take big creative swings — the goal is to experiment with what could work, not just what has worked before</li>
+      </ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 03</span></div>
+      <h3>Upload &amp; Presentation</h3>
+      <h4 style="margin-bottom:0.75rem;color:var(--ink);">Content Upload (4:00 PM – 4:15 PM)</h4>
+      <ul class="bullet-list">
+        <li>Each participant uploads their work to a shared Google Slide deck, ensuring that every submission has a dedicated slide with the final content piece (or a preview if it's video-based)</li>
+      </ul>
+      <h4 style="margin:1rem 0 0.75rem;color:var(--ink);">Content Presentation (4:00 PM – 4:15 PM)</h4>
+      <ul class="bullet-list">
+        <li>Each team member presents their work, explaining:
+          <ul class="bullet-list sub-list">
+            <li>Why they chose their concept</li>
+            <li>What they were trying to accomplish</li>
+            <li>What worked and what they would improve</li>
+          </ul>
+        </li>
+        <li>Encourage an open discussion about what content styles should be explored further in future production cycles</li>
+      </ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 04</span></div>
+      <h3>Voting &amp; Incentive</h3>
+      <h4 style="margin-bottom:0.75rem;color:var(--ink);">Anonymous Voting Process</h4>
+      <ul class="bullet-list">
+        <li>Conduct an anonymous team vote to determine the most innovative piece of content</li>
+        <li>Use a fair and transparent method like Google Forms, Slido, or another polling tool</li>
+        <li>Voting criteria:
+          <ul class="bullet-list sub-list">
+            <li>Creativity – Is this a fresh approach?</li>
+            <li>Potential Impact – Could this be a game-changing content format?</li>
+            <li>Brand Fit – While pushing boundaries, does it still align with the brand's identity?</li>
+          </ul>
+        </li>
+      </ul>
+      <h4 style="margin:1rem 0 0.75rem;color:var(--ink);">Winner Incentives</h4>
+      <ul class="bullet-list">
+        <li>The winner receives a reward, such as an Amazon gift card, team recognition, or an opportunity to develop their idea into a full-scale campaign</li>
+        <li>The real incentive: the winning content (and other top pieces) will be tested in actual distribution — turning experiments into real-world impact</li>
+      </ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 04</span></div>
+      <h3>Follow-Up &amp; Implementation</h3>
+      <h4 style="margin-bottom:0.75rem;color:var(--ink);">Scheduling &amp; Testing</h4>
+      <ul class="bullet-list">
+        <li>Work with channel managers to strategically schedule and test the hackathon content</li>
+        <li>Determine which pieces will be published and track their performance</li>
+      </ul>
+      <h4 style="margin:1rem 0 0.75rem;color:var(--ink);">Analysis &amp; Learnings</h4>
+      <ul class="bullet-list">
+        <li>Review engagement, reach, and audience reactions</li>
+        <li>Identify what worked and why, and refine the best ideas for future content strategies</li>
+      </ul>
+    </div>
+
+    <div class="action-box">
+      <div class="action-icon">!</div>
+      <h3>Final Thoughts: Why This Works</h3>
+      <p style="text-align:left;max-width:100%;">
+        <span style="display:block;margin-bottom:0.75rem;"><strong style="color:var(--gold-lt);">Encourages Creative Risks</strong> → Forces the team to step outside their comfort zone</span>
+        <span style="display:block;margin-bottom:0.75rem;"><strong style="color:var(--gold-lt);">Breaks Content Stagnation</strong> → Injects new ideas into the pipeline</span>
+        <span style="display:block;margin-bottom:0.75rem;"><strong style="color:var(--gold-lt);">Turns Experimentation Into Real-World Impact</strong> → Winning ideas don't just stay in the hackathon; they get tested and iterated</span>
+        <strong style="color:var(--gold-lt);">Builds a Culture of Innovation</strong> → The team gets excited about pushing creative limits regularly
+      </p>
+    </div>
+
+    <div class="action-box" style="margin-top:1rem;">
+      <div class="action-icon">!</div>
+      <h3>Action Step</h3>
+      <p>Plan your next Content Hackathon, set clear expectations, and absolutely crush that shit.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 06 DIVIDER ==================== -->
+<div class="chapter-divider" data-num="06">
+  <div class="chapter-divider-inner">
+    <div class="chapter-num">Chapter 06</div>
+    <h2>Streamline<br>Your Hiring<br>Process</h2>
+  </div>
+</div>
+
+<!-- ==================== CH06 CONTENT ==================== -->
+<div class="section">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:0.5rem;">Job Description Worksheet</h2>
+    <hr class="rule-h">
+
+    <div class="obj-box">
+      <div class="obj-label">Objective</div>
+      <div class="obj-content">
+        <p>A solid job description isn't just a list of tasks — it's a magnet for the right talent. If you're not crystal clear on what you need, you'll attract people who aren't the right fit. This worksheet will help you write a clear, compelling, and effective job description by breaking down what to include, why it matters, and how to make it stand out. You'll get a section-by-section breakdown, fill-in-the-blank template, and a real example so you're not guessing. The goal? To make sure the right person reads this and immediately knows, <em>"This is for me."</em></p>
+      </div>
+    </div>
+
+    <h3 style="margin:2rem 0 1rem;">Job Description Sections &amp; What They Mean</h3>
+    <div class="principle-list">
+      <div class="principle-item"><span class="principle-badge">Role</span><p>A couple sentences that sum up what this position is and why it exists; think of it as the job's purpose in a sentence</p></div>
+      <div class="principle-item"><span class="principle-badge">Responsibilities</span><p>A clear, no-fluff list of what this person will actually do day-to-day; this helps them visualize the role and understand what's expected</p></div>
+      <div class="principle-item"><span class="principle-badge">Requirements</span><p>The non-negotiables — skills, experience, or traits someone must have to be successful in this role; keep it focused on what truly matters</p></div>
+      <div class="principle-item"><span class="principle-badge">Results</span><p>What success looks like in this role. Instead of just listing tasks, this section defines what the outcome should be</p></div>
+      <div class="principle-item"><span class="principle-badge">Availability</span><p>The days/times you expect them to work; be upfront about schedule expectations to avoid misalignment later</p></div>
+      <div class="principle-item"><span class="principle-badge">Compensation Range</span><p>A transparent salary or pay range so candidates know what to expect before applying</p></div>
+      <div class="principle-item"><span class="principle-badge">Company Core Values</span><p>What your company stands for and how you operate; this isn't just fluff — values determine culture fit, so it's crucial to include</p></div>
+    </div>
+
+    <div class="jd-grid mt-2">
+      <div class="jd-row"><div class="jd-key">Role</div><div class="jd-val"></div></div>
+      <div class="jd-row"><div class="jd-key">Responsibilities</div><div class="jd-val"></div></div>
+      <div class="jd-row"><div class="jd-key">Requirements</div><div class="jd-val"></div></div>
+      <div class="jd-row"><div class="jd-key">Results</div><div class="jd-val"></div></div>
+      <div class="jd-row"><div class="jd-key">Availability</div><div class="jd-val"></div></div>
+      <div class="jd-row"><div class="jd-key">Compensation Range</div><div class="jd-val"></div></div>
+      <div class="jd-row"><div class="jd-key">Company Core Values</div><div class="jd-val"></div></div>
+    </div>
+
+    <!-- Anonymized Example -->
+    <div style="margin-top:2.5rem;">
+      <p class="small italic" style="margin-bottom:1rem;">Below is a real job description that has been anonymized.</p>
+      <div style="background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:2rem;">
+        <h2 style="font-size:1.5rem;margin-bottom:1.5rem;">Brand Director, _______________'s Personal Brand</h2>
+        <p><strong>Location:</strong> ___________</p>
+        <p><strong>Department:</strong> Marketing</p>
+        <p><strong>Reports To:</strong> Chief Executive Officer</p>
+        <p><strong>Compensation:</strong> $245,000 + Performance Bonus</p>
+        <hr class="rule-h">
+        <h3 style="margin-bottom:0.75rem;">Role Overview</h3>
+        <p>___________ is looking for a Brand Director to build and scale CEO ___________'s personal brand across YouTube, LinkedIn, and other key platforms. This role requires a deep understanding of content strategy, social media growth, and personal brand development. You will be responsible for transforming ___________'s thought leadership into an influential digital presence that resonates with entrepreneurs, business leaders, and innovators.</p>
+        <hr class="rule-h">
+        <h3 style="margin-bottom:0.75rem;">Responsibilities</h3>
+        <h4 style="margin-bottom:0.5rem;color:var(--accent);">Content Strategy &amp; Execution</h4>
+        <ul class="bullet-list">
+          <li>Establish and scale ___________'s YouTube presence, leveraging his speeches and interviews to create both long-form and short-form content.
+            <ul class="bullet-list sub-list"><li>Eventually building on top of this and developing platform native, platform first YouTube content.</li></ul>
+          </li>
+          <li>Develop and execute a LinkedIn content strategy, incorporating a mix of written posts and short-form videos derived from existing content.</li>
+          <li>Identify key content themes and topics that align with ___________'s expertise, industry trends, and audience interests.</li>
+          <li>Continuously refine content distribution strategies to maximize engagement and growth.</li>
+        </ul>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Content Strategy &amp; Execution</h4>
+        <ul class="bullet-list">
+          <li>Oversee the filming and editing process for social content, ensuring high-quality production and platform-specific optimization.</li>
+          <li>Work closely with editors, writers, and content strategists to develop engaging assets tailored for each platform.</li>
+          <li>Conduct biweekly interviews with ___________________________' to extract valuable insights for LinkedIn content.</li>
+          <li>Oversee and direct post-production workflows to ensure fast execution and high-impact creative.</li>
+        </ul>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Team Building &amp; Leadership</h4>
+        <ul class="bullet-list">
+          <li>Develop a roadmap for scaling the personal brand team, hiring creatives, editors, and strategists as needed. Some full time in house, some freelance.
+            <ul class="bullet-list sub-list"><li>Explore utilization of the current creative team first.</li></ul>
+          </li>
+          <li>Manage external creative partners and agencies where necessary, ensuring alignment with brand goals.</li>
+          <li>Provide creative direction to the team, ensuring a consistent and compelling brand voice.</li>
+        </ul>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Platform Strategy &amp; Growth</h4>
+        <ul class="bullet-list">
+          <li>Stay ahead of social media trends and platform algorithm changes to ensure ___________'s brand is optimized for maximum reach and engagement.</li>
+          <li>Develop a strategy to evolve and adapt as social platforms and audience behaviors shift.</li>
+          <li>Analyze content performance metrics and iterate based on data-driven insights.</li>
+        </ul>
+        <hr class="rule-h">
+        <h3 style="margin-bottom:0.75rem;">Requirements</h3>
+        <ul class="bullet-list">
+          <li>3+ years of experience growing a personal brand with proven success in scaling reach and engagement.</li>
+          <li>Expertise in social media content strategy, and understanding the nuance in strategy between long form video, short form video, podcast, and written.</li>
+          <li>Strong background in filming, editing, and social content production (both short-form and long-form).</li>
+          <li>Deep understanding of social platform algorithms, engagement tactics, and audience growth strategies.</li>
+          <li>Experience managing creatives</li>
+          <li>Exceptional storytelling skills, with the ability to extract and refine high-value insights.</li>
+          <li>A passion for entrepreneurship, business growth, and thought leadership content.</li>
+          <li>Based in ___________ or willing to relocate.</li>
+        </ul>
+        <hr class="rule-h">
+        <h3 style="margin-bottom:0.75rem;">Results (KPIs &amp; Success Metrics)</h3>
+        <ul class="bullet-list">
+          <li>Establish ___________'s YouTube channel with consistent long-form uploads and high-performing clips.</li>
+          <li>Scale LinkedIn engagement and follower growth through a mix of written and video content.</li>
+          <li>Increase overall brand awareness and ___________'s positioning as a thought leader in business and technology.</li>
+          <li>Build a scalable content team to support the long-term vision of the brand.</li>
+          <li>Drive measurable audience growth and engagement across platforms.</li>
+          <li>Weekly reporting on content performance and audience growth.</li>
+        </ul>
+        <hr class="rule-h">
+        <h4 style="margin-bottom:0.5rem;color:var(--accent);">Communication Expectations &amp; Availability</h4>
+        <ul class="bullet-list">
+          <li>Availability: Monday – Friday 8am – 6pm</li>
+          <li>With occasional weekend work</li>
+        </ul>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Communication Expectations &amp; Availability</h4>
+        <ul class="bullet-list"><li><em>Core values can go here</em></li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 07 DIVIDER ==================== -->
+<div class="chapter-divider" data-num="07">
+  <div class="chapter-divider-inner">
+    <div class="chapter-num">Chapter 07</div>
+    <h2>Hiring<br>Process</h2>
+  </div>
+</div>
+
+<!-- ==================== CH07 CONTENT ==================== -->
+<div class="section section-alt">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:0.5rem;">Hiring Funnel Playbook</h2>
+    <hr class="rule-h">
+
+    <div class="obj-box">
+      <div class="obj-label">Objective</div>
+      <div class="obj-content">
+        <p>Most hiring advice is outdated and built for slow-moving companies — not for brands that need fast, creative, high-impact teams. The Hiring Playbook is designed to help you find, vet, and build a team that actually delivers — people who move fast, think ahead, and make your life easier, not harder.</p>
+        <p style="margin-top:0.75rem;">This playbook isn't about guessing. It's built on first principles — from defining the right roles to filtering for the right people, onboarding them effectively, and keeping A-players engaged. Follow this framework, and you won't just hire — you'll build a team that scales your brand the right way.</p>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 01</span></div>
+      <h3>The Hiring Mindset</h3>
+      <h4 style="margin-bottom:0.5rem;color:var(--accent);">Your Team = Your Multiplier</h4>
+      <ul class="bullet-list"><li>The right hires don't just execute — they amplify everything you do. If you're trying to scale, your team needs to move at your speed.</li></ul>
+      <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Hire for Culture, Train for Skills</h4>
+      <ul class="bullet-list"><li>You can teach someone technical skills. Tougher to teach drive, empathy, adaptability, or the ability to think three steps ahead.</li></ul>
+      <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Find People Who Are Deep in Their Lane but Can Play Multiple Positions</h4>
+      <ul class="bullet-list"><li>Early hires should be specialists who don't mind wearing different hats. Later, you can niche them down.</li></ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 02</span></div>
+      <h3>Get Clear on What You Actually Need</h3>
+      <h4 style="margin-bottom:0.5rem;color:var(--accent);">Where Are You the Bottleneck?</h4>
+      <ul class="bullet-list"><li>If content slows down every time after you film, your first hire should be an editor. If growth is your focus, bring in a strategist before more creatives.</li></ul>
+      <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Prioritize by Platform &amp; Impact</h4>
+      <ul class="bullet-list"><li>Example: If YouTube is driving business, you need an editor who understands retention and pacing — not just someone who knows how to cut clips.</li></ul>
+      <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Find People Who Are Deep in Their Lane but Can Play Multiple Positions</h4>
+      <ul class="bullet-list"><li>Early hires should be specialists who don't mind wearing different hats. Later, you can niche them down.</li></ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 03</span></div>
+      <h3>The Hiring Funnel (No Random Resumes Allowed)</h3>
+      <p>Every hire should go through these steps before they join your team:</p>
+      <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">01. Define the Role Clearly</h4>
+      <ul class="bullet-list">
+        <li>Are they creating, managing, or analyzing content?</li>
+        <li>What does success look like for them in 3-6 months?</li>
+        <li>Keep it simple: If you can't describe their role in a sentence, it's not clear enough.</li>
+      </ul>
+      <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">02. The Filter Process</h4>
+      <ul class="bullet-list">
+        <li><strong>Resume Submission</strong>
+          <ul class="bullet-list sub-list"><li>(Optional) Have them submit a video application explaining why they want this role.</li></ul>
+        </li>
+        <li><strong>Screening Call</strong>
+          <ul class="bullet-list sub-list"><li>Quick convo to make sure expectations align (pay, workload, remote vs. in-person).</li></ul>
+        </li>
+        <li><strong>Technical Interview + Skill Test (No Hypotheticals, Real Work)</strong>
+          <ul class="bullet-list sub-list">
+            <li>Ask them the "nitty gritty" questions that prove they are technically proficient (this is ideally conducted by an SME or someone with enough context to ask technical questions)</li>
+            <li>If they pass the technical interview, give them a task that mirrors the actual job. Example: If hiring a short-form editor, send them raw footage and see how they structure it.</li>
+          </ul>
+        </li>
+        <li><strong>Culture Fit Interview</strong>
+          <ul class="bullet-list sub-list"><li>This is where you find out if they're someone you want to work with every day.</li></ul>
+        </li>
+        <li><strong>Final Interview (Leadership Sign-Off)</strong>
+          <ul class="bullet-list sub-list"><li>If they've made it this far, this is more about getting them hyped and aligned.</li></ul>
+        </li>
+      </ul>
+      <div style="background:var(--gold-pale);border-left:3px solid var(--gold);padding:1rem 1.25rem;margin:1rem 0;border-radius:0 3px 3px 0;">
+        <p><strong>Pro Tip:</strong> If you're strapped for time, combine steps instead of skipping them.</p>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 04</span></div>
+      <h3>Onboarding: Setting the Tone from Day One</h3>
+      <h4 style="margin-bottom:0.5rem;color:var(--accent);">30/60/90-Day Roadmap</h4>
+      <ul class="bullet-list"><li>Make sure they know what "winning" looks like in the first three months.</li></ul>
+      <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Let Them Take Ownership</h4>
+      <ul class="bullet-list"><li>Set clear expectations, but don't micromanage. Instead of fixing their mistakes, ask: <em>"How would you handle this?"</em></li></ul>
+      <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Make Speed a Habit</h4>
+      <ul class="bullet-list"><li>Fast execution beats perfect execution. Get them comfortable making decisions quickly.</li></ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 05</span></div>
+      <h3>Scaling the Team (Without Breaking It)</h3>
+      <h4 style="margin-bottom:0.5rem;color:var(--accent);">Start Lean, Then Specialize</h4>
+      <ul class="bullet-list">
+        <li>The first people you hire will be specialists forced to be generalists.</li>
+        <li>Over time, refine their roles based on strengths and impact.</li>
+      </ul>
+      <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Don't Scale Chaos</h4>
+      <ul class="bullet-list"><li>If your systems are a mess, more people won't fix it — they'll just make it worse. Nail your processes before you add bodies.</li></ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 06</span></div>
+      <h3>Leadership &amp; Retention</h3>
+      <h4 style="margin-bottom:0.5rem;color:var(--accent);">Help People Go Deep in Their Skillset</h4>
+      <ul class="bullet-list"><li>Encourage your team to master one area instead of half-assing five.</li></ul>
+      <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Create an Environment Where They Want to Stay</h4>
+      <ul class="bullet-list">
+        <li>Pay well, challenge them, and make sure they feel like they're growing.</li>
+        <li>A-Players won't stick around if they're not growing.</li>
+      </ul>
+      <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Keep It Fun</h4>
+      <ul class="bullet-list"><li>Experiment. Do content hackathons. Let people try weird ideas. The best content comes from teams that actually enjoy what they do.</li></ul>
+    </div>
+
+    <div class="action-box">
+      <div class="action-icon">!</div>
+      <h3>Final Thought</h3>
+      <p>Hiring isn't about filling roles — it's about building momentum and solving problems. A great team doesn't just execute your vision; they push it forward. Follow this, and you'll build a squad that can scale your brand the right way.<br><br><strong style="color:var(--gold-lt);">Now go find your A-players.</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 08 DIVIDER ==================== -->
+<div class="chapter-divider" data-num="08">
+  <div class="chapter-divider-inner">
+    <div class="chapter-num">Chapter 08</div>
+    <h2>Full-Time<br>Employees vs<br>Contractors &amp;<br>Agencies</h2>
+  </div>
+</div>
+
+<!-- ==================== CH08 CONTENT ==================== -->
+<div class="section">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:0.5rem;">Full-Time Employees vs Contractors &amp; Agencies Worksheet</h2>
+    <hr class="rule-h">
+
+    <div class="obj-box">
+      <div class="obj-label">Objective</div>
+      <div class="obj-content">
+        <p>Use this worksheet to determine the best hiring option based on your business needs, workload, budget, and required expertise. Answer the questions below and use the decision-making table to evaluate your options.</p>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 01</span></div>
+      <h3>Identify Your Needs</h3>
+      <h4 style="margin-bottom:0.75rem;color:var(--ink);">Hiring Decision Formula</h4>
+      <p>Use the table below to calculate the best hiring option based on your specific needs. Assign values (1-5) to each criterion where 1 = Not Important and 5 = Critical. Then total the scores for each column.</p>
+      <table class="decision-tbl">
+        <thead>
+          <tr><th>Criteria</th><th>Full-Time</th><th>Contractor</th><th>Agency</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ongoing, long-term need</td><td></td><td></td><td></td></tr>
+          <tr><td>Requires niche expertise</td><td></td><td></td><td></td></tr>
+          <tr><td>High flexibility needed</td><td></td><td></td><td></td></tr>
+          <tr><td>Budget for salary &amp; benefits</td><td></td><td></td><td></td></tr>
+          <tr><td>Quick execution required</td><td></td><td></td><td></td></tr>
+          <tr><td>Company culture integration</td><td></td><td></td><td></td></tr>
+          <tr><td>Scalability needed</td><td></td><td></td><td></td></tr>
+          <tr><td>Specialized, multi-skill team</td><td></td><td></td><td></td></tr>
+          <tr><td>Low overhead costs preferred</td><td></td><td></td><td></td></tr>
+          <tr><td>Speed to hire</td><td></td><td></td><td></td></tr>
+          <tr><td>Total Score</td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <h4 style="margin:1.5rem 0 0.75rem;color:var(--ink);">Decision Guide</h4>
+      <ul class="bullet-list">
+        <li>Highest Score = Recommended Option</li>
+        <li><strong>Full-Time Employee</strong> → Best for ongoing, stable roles with deep integration.</li>
+        <li><strong>Contractor</strong> → Best for flexible, specialized, and short-term needs.</li>
+        <li><strong>Agency</strong> → Best for scalable, high-expertise, multi-disciplinary projects.</li>
+      </ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-label"><span class="step-badge">Step 02</span></div>
+      <h3>Next Steps &amp; Action Items</h3>
+      <h4 style="margin-bottom:0.75rem;color:var(--accent);">If Hiring a Full-Time Employee:</h4>
+      <ul class="bullet-list">
+        <li>Write a detailed job description outlining responsibilities, qualifications, and growth potential.</li>
+        <li>Allocate budget for salary, benefits, and onboarding.</li>
+        <li>Develop a structured hiring process (job posting, screening, interviews, trial period).</li>
+        <li>Plan for long-term career growth and retention strategies.</li>
+      </ul>
+      <h4 style="margin:1rem 0 0.75rem;color:var(--accent);">If Hiring a Contractor:</h4>
+      <ul class="bullet-list">
+        <li>Write a detailed job description outlining responsibilities, qualifications, and growth potential.</li>
+        <li>Allocate budget for salary, benefits, and onboarding.</li>
+        <li>Develop a structured hiring process (job posting, screening, interviews, trial period).</li>
+        <li>Plan for long-term career growth and retention strategies.</li>
+      </ul>
+      <h4 style="margin:1rem 0 0.75rem;color:var(--accent);">If Hiring an Agency:</h4>
+      <ul class="bullet-list">
+        <li>Research agencies with a strong track record in your industry.</li>
+        <li>Evaluate portfolios, client reviews, and past case studies.</li>
+        <li>Define success metrics, deliverables, and expected ROI.</li>
+        <li>Establish clear communication and approval processes for projects.</li>
+      </ul>
+    </div>
+
+    <div class="action-box">
+      <div class="action-icon">!</div>
+      <h3>Final Thought: Avoid Hiring Pitfalls</h3>
+      <div class="pitfall-grid" style="text-align:left;max-width:100%;">
+        <div class="pitfall-row"><div class="pitfall-label">Don't hire out of panic</div><div class="pitfall-arrow">→</div><div class="pitfall-result">Rushed hiring decisions often lead to misalignment and wasted resources</div></div>
+        <div class="pitfall-row"><div class="pitfall-label">Prioritize cultural fit for full-time roles</div><div class="pitfall-arrow">→</div><div class="pitfall-result">Skills can be trained, but alignment with company values is harder to develop</div></div>
+        <div class="pitfall-row"><div class="pitfall-label">Start with a trial project for contractors and agencies</div><div class="pitfall-arrow">→</div><div class="pitfall-result">This minimizes risk and ensures alignment before deeper engagement</div></div>
+        <div class="pitfall-row"><div class="pitfall-label">Regularly reassess needs</div><div class="pitfall-arrow">→</div><div class="pitfall-result">Your business will evolve — make sure your hiring decisions stay aligned with long-term goals</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 09 DIVIDER ==================== -->
+<div class="chapter-divider" data-num="09">
+  <div class="chapter-divider-inner">
+    <div class="chapter-num">Chapter 09</div>
+    <h2>Onboard<br>Your Team<br>Effectively</h2>
+  </div>
+</div>
+
+<!-- ==================== CH09 CONTENT ==================== -->
+<div class="section section-alt">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:0.5rem;">30/60/90 Day Onboarding Worksheet</h2>
+    <hr class="rule-h">
+
+    <div class="obj-box">
+      <div class="obj-label">Objective</div>
+      <div class="obj-content">
+        <p>A strong 30/60/90-day onboarding plan sets new employees up for success by giving them a clear roadmap for what to focus on, how to integrate into the team, and what success looks like at each stage. This worksheet will help you structure an effective plan that ensures your new hire gains momentum quickly and delivers impact.</p>
+      </div>
+    </div>
+
+    <h3 style="margin:2rem 0 1rem;">Instructions</h3>
+    <ul class="bullet-list">
+      <li>Use this worksheet to map out key milestones, goals, and expectations for the first 90 days</li>
+      <li>Each section should have clear learning objectives, tasks, and measurable outcomes</li>
+      <li>The goal is to transition the new hire from learning → contributing → owning their role</li>
+    </ul>
+
+    <div class="example-hdr" style="margin-top:2rem;">30/60/90 Day Plan Template</div>
+    <div style="background:var(--white);border:1px solid var(--rule);border-top:none;border-radius:0 0 4px 4px;padding:2rem;">
+
+      <div class="phase-header"><div class="ph-label">Phase 1</div><h3>30 Days – Learning &amp; Immersion</h3><div class="ph-focus">Focus: Understanding the company, role, expectations, and workflow.</div></div>
+      <div class="phase-body">
+        <div class="write-label">Key Learning Objectives:</div>
+        <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+        <div class="write-label mt-1">Tasks &amp; Deliverables:</div>
+        <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+        <div class="write-label mt-1">Success Metrics:</div>
+        <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+      </div>
+
+      <div class="phase-header"><div class="ph-label">Phase 2</div><h3>60 Days – Contribution &amp; Execution</h3><div class="ph-focus">Focus: Applying knowledge, taking on responsibilities, and delivering early wins.</div></div>
+      <div class="phase-body">
+        <div class="write-label">Key Learning Objectives:</div>
+        <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+        <div class="write-label mt-1">Tasks &amp; Deliverables:</div>
+        <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+        <div class="write-label mt-1">Success Metrics:</div>
+        <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+      </div>
+
+      <div class="phase-header"><div class="ph-label">Phase 3</div><h3>90 Days – Ownership &amp; Impact</h3><div class="ph-focus">Focus: Fully owning the role, driving initiatives, and making a measurable impact.</div></div>
+      <div class="phase-body">
+        <div class="write-label">Key Learning Objectives:</div>
+        <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+        <div class="write-label mt-1">Tasks &amp; Deliverables:</div>
+        <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+        <div class="write-label mt-1">Success Metrics:</div>
+        <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+      </div>
+
+      <h3 style="color:var(--accent);margin-bottom:0.75rem;">Final Step: Review &amp; Feedback</h3>
+      <ul class="bullet-list">
+        <li>At the end of each phase (30, 60, 90 days), have a check-in meeting to review progress and adjust goals if needed.</li>
+        <li>Gather feedback from the new hire on their experience and areas for improvement.</li>
+        <li>Ensure the employee has a clear roadmap for continued growth and success beyond 90 days.</li>
+      </ul>
+    </div>
+
+    <div class="action-box">
+      <div class="action-icon">!</div>
+      <h3>Action Step</h3>
+      <p>Use this template to build a custom onboarding plan for your next new hire and ensure they hit the ground running.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 10 DIVIDER ==================== -->
+<div class="chapter-divider" data-num="10">
+  <div class="chapter-divider-inner">
+    <div class="chapter-num">Chapter 10</div>
+    <h2>Develop &amp;<br>Retain Your<br>High Performing<br>Team</h2>
+  </div>
+</div>
+
+<!-- ==================== CH10 CONTENT ==================== -->
+<div class="section">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:0.5rem;">Effective 1:1 Playbook</h2>
+    <hr class="rule-h">
+
+    <div class="obj-box">
+      <div class="obj-label">Objective</div>
+      <div class="obj-content">
+        <p>1:1 meetings aren't just check-ins — they're a high-leverage tool for developing your team, solving roadblocks, and keeping communication clear. Done right, they build trust, improve performance, and ensure everyone's on the same page with the company goals. This playbook will walk you through how to structure and run effective 1:1s that drive real impact.</p>
+      </div>
+    </div>
+
+    <div class="example-hdr" style="margin-top:2rem;">1:1 Meeting Framework</div>
+    <div style="background:var(--white);border:1px solid var(--rule);border-top:none;border-radius:0 0 4px 4px;padding:2rem;">
+
+      <div class="part-block">
+        <div class="part-label"><span class="part-badge">Part 01</span></div>
+        <h3>Frequency &amp; Duration</h3>
+        <div class="freq-3">
+          <div class="freq-card">
+            <div class="fc-num">01</div>
+            <h4>Cadence</h4>
+            <div class="fc-arrow">↓</div>
+            <p>Weekly or bi-weekly (based on team size and role complexity)</p>
+          </div>
+          <div class="freq-card">
+            <div class="fc-num">02</div>
+            <h4>Length</h4>
+            <div class="fc-arrow">↓</div>
+            <p>30-45 minutes max — long enough to dive deep, but not waste time</p>
+          </div>
+          <div class="freq-card">
+            <div class="fc-num">03</div>
+            <h4>Format</h4>
+            <div class="fc-arrow">↓</div>
+            <p>Can be in-person, via video call, or phone, but should be consistent.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="rule-h">
+
+      <div class="part-block">
+        <div class="part-label"><span class="part-badge">Part 02</span></div>
+        <h3>Meeting Structure</h3>
+        <p>A good 1:1 should be structured yet flexible, ensuring key topics are covered while leaving room for open discussion.</p>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Core Agenda (Simple, Repeatable Format)</h4>
+        <h4 style="margin-bottom:0.5rem;color:var(--ink);">Wins &amp; Highlights (5 min)</h4>
+        <ul class="bullet-list">
+          <li>What's going well? Celebrate progress and achievements.</li>
+          <li>Recognize effort and reinforce positive behaviors.</li>
+        </ul>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--ink);">Challenges &amp; Roadblocks (10 min)</h4>
+        <ul class="bullet-list">
+          <li>What's slowing you down or frustrating you?</li>
+          <li>How can I help remove obstacles or provide support?</li>
+        </ul>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--ink);">Priorities &amp; Goals (10 min)</h4>
+        <ul class="bullet-list">
+          <li>Are you clear on what to focus on this week/month?</li>
+          <li>Are there any adjustments needed to hit key objectives?</li>
+        </ul>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--ink);">Feedback (5-10 min)</h4>
+        <ul class="bullet-list">
+          <li>Manager gives actionable feedback (specific, timely, and clear).</li>
+          <li>Employee shares feedback on what's working or areas to improve.</li>
+        </ul>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--ink);">Growth &amp; Development (Optional, but crucial for long-term success)</h4>
+        <ul class="bullet-list">
+          <li>What skills do you want to develop?</li>
+          <li>How can I support your career progression?</li>
+        </ul>
+      </div>
+
+      <hr class="rule-h">
+
+      <div class="part-block">
+        <div class="part-label"><span class="part-badge">Part 03</span></div>
+        <h3>Key Principles for Effective 1:1s</h3>
+        <div class="principle-list">
+          <div class="principle-item"><span class="principle-badge">Be Present &amp; Engaged</span><p>No multitasking, Slack messages, or distractions. This is dedicated time for your team members.</p></div>
+          <div class="principle-item"><span class="principle-badge">Listen More Than You Talk</span><p>Aim for 80% listening, 20% talking. Let them drive the conversation.</p></div>
+          <div class="principle-item"><span class="principle-badge">Ask Open-Ended Questions</span><p>Example: "What's one thing I can do better to support you?"</p></div>
+          <div class="principle-item"><span class="principle-badge">Follow Up on Action Items</span><p>If something is discussed, track it and follow up the next time you meet.</p></div>
+          <div class="principle-item"><span class="principle-badge">Make It About Them</span><p>This isn't just a status update — it's about supporting their success and growth.</p></div>
+        </div>
+      </div>
+
+      <hr class="rule-h">
+
+      <div class="mistakes-box">
+        <div class="mistakes-hdr">Common Mistakes &amp; How to Avoid Them</div>
+        <div class="mistake-row"><strong>Turning 1:1s into Status Updates:</strong><p>Use async tools (Slack, Notion) for routine updates; keep 1:1s focused on real discussions.</p></div>
+        <div class="mistake-row"><strong>Skipping or Constantly Rescheduling:</strong><p>Sends a message that their development isn't a priority. Make 1:1s non-negotiable.</p></div>
+        <div class="mistake-row"><strong>Only Giving Feedback When Something's Wrong:</strong><p>Regular feedback builds trust &amp; prevents bigger issues down the road.</p></div>
+        <div class="mistake-row"><strong>Being Too Generic:</strong><p>"How's everything going?" won't spark real conversations. Use targeted questions.</p></div>
+      </div>
+    </div>
+
+    <!-- 1:1 Template -->
+    <div class="meeting-template" style="margin-top:2rem;">
+      <div class="mt-header">
+        <span>1:1 Meeting Template</span>
+        <p>Use this template to keep your 1:1s structured and effective.</p>
+      </div>
+      <div class="mt-body">
+        <h3 style="margin-bottom:1rem;">[Employee Name] 1:1 Meeting Notes</h3>
+        <p style="margin-bottom:1.5rem;">A good 1:1 should be structured yet flexible, ensuring key topics are covered while leaving room for open discussion.</p>
+        <p><strong>Date:</strong> ___________</p>
+        <div class="mt-section" style="margin-top:1.5rem;">
+          <div class="mt-section-label">Key Wins &amp; Progress:</div>
+          <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+        </div>
+        <div class="mt-section">
+          <div class="mt-section-label">Challenges &amp; Roadblocks:</div>
+          <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+        </div>
+        <div class="mt-section">
+          <div class="mt-section-label">Priorities &amp; Goals:</div>
+          <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+        </div>
+        <div class="mt-section">
+          <div class="mt-section-label">Feedback &amp; Action Items:</div>
+          <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+        </div>
+        <div class="mt-section">
+          <div class="mt-section-label">Career Growth &amp; Development (Optional):</div>
+          <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+        </div>
+        <div class="mt-section">
+          <div class="mt-section-label">Follow-Up Items for Next Meeting:</div>
+          <div class="write-area"><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-box">
+      <div class="action-icon">!</div>
+      <h3>Why This Works</h3>
+      <p style="text-align:left;max-width:100%;">
+        <span style="display:block;margin-bottom:0.75rem;"><strong style="color:var(--gold-lt);">Keeps communication clear &amp; proactive</strong> → Prevents misalignment and surprises</span>
+        <span style="display:block;margin-bottom:0.75rem;"><strong style="color:var(--gold-lt);">Strengthens trust &amp; retention</strong> → Employees who feel heard and supported stay longer</span>
+        <strong style="color:var(--gold-lt);">Creates a culture of continuous improvement</strong> → Regular feedback and goal-setting drive performance
+      </p>
+    </div>
+
+    <div class="action-box" style="margin-top:1rem;">
+      <div class="action-icon">!</div>
+      <h3>Action Step</h3>
+      <p>Implement this playbook in your next 1:1 and refine based on what works best for your team.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 11 DIVIDER ==================== -->
+<div class="chapter-divider" data-num="11">
+  <div class="chapter-divider-inner">
+    <div class="chapter-num">Chapter 11</div>
+    <h2>Build<br>A Strong<br>Team Culture</h2>
+  </div>
+</div>
+
+<!-- ==================== CH11 CONTENT ==================== -->
+<div class="section section-alt">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:0.5rem;">Maker vs Manager Schedule Playbook</h2>
+    <hr class="rule-h">
+
+    <div class="obj-box">
+      <div class="obj-label">Objective</div>
+      <div class="obj-content">
+        <p>To optimize efficiency and creativity in media teams by implementing a structured schedule that protects deep work for creators (makers) while allowing managers to effectively handle meetings and operations.</p>
+      </div>
+    </div>
+
+    <div class="example-hdr" style="margin-top:2rem;">The Playbook</div>
+    <div style="background:var(--white);border:1px solid var(--rule);border-top:none;border-radius:0 0 4px 4px;padding:2rem;">
+
+      <div class="part-block">
+        <div class="part-label"><span class="part-badge">Part 01</span></div>
+        <h3>Understanding the Maker vs. Manager Dynamic</h3>
+        <div class="mm-grid">
+          <div class="mm-card">
+            <div class="mm-title">Makers</div>
+            <div class="mm-sub">(editors, designers, writers, strategists)</div>
+            <p>Need uninterrupted blocks of time to enter a flow state and produce high-quality work.</p>
+          </div>
+          <div class="mm-card">
+            <div class="mm-title">Managers</div>
+            <div class="mm-sub">(team leads, producers, project managers)</div>
+            <p>Rely on meetings and real-time collaboration to push projects forward.</p>
+          </div>
+        </div>
+        <p>The conflict arises when managers schedule meetings in a way that disrupts makers' deep work, causing context-switching delays that reduce efficiency.</p>
+      </div>
+
+      <hr class="rule-h">
+
+      <div class="part-block">
+        <div class="part-label"><span class="part-badge">Part 02</span></div>
+        <h3>Structuring the Workday</h3>
+        <p>To balance both needs, implement a <strong>split schedule</strong>:</p>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Morning: Maker Time (7 AM – 12 PM)</h4>
+        <ul class="bullet-list">
+          <li>Blocked for deep work, no meetings unless absolutely critical.</li>
+          <li>Writers script, editors cut, designers design — without interruptions.</li>
+          <li>Managers should avoid pulling makers into meetings during this time.</li>
+        </ul>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Afternoon: Manager Time (12 PM – 5 PM)</h4>
+        <ul class="bullet-list">
+          <li>Reserved for meetings, strategy sessions, team check-ins, and collaborative work.</li>
+          <li>Creatives who need to meet with others can schedule calls during this window.</li>
+        </ul>
+      </div>
+
+      <hr class="rule-h">
+
+      <div class="part-block">
+        <div class="part-label"><span class="part-badge">Part 03</span></div>
+        <h3>Weekly Workflow Optimization</h3>
+        <h4 style="margin-bottom:0.5rem;color:var(--accent);">Monday = Manager Day</h4>
+        <ul class="bullet-list"><li>Stack as many meetings as possible on this day to minimize disruptions the rest of the week.</li></ul>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Tuesday &amp; Thursday = Hybrid Days</h4>
+        <ul class="bullet-list"><li>Mornings are for making, afternoons for necessary check-ins.</li></ul>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Wednesday = Maker Day</h4>
+        <ul class="bullet-list">
+          <li>No meetings. Full deep-work day.</li>
+          <li>Encourage the team to push creative boundaries and experiment with new formats.</li>
+        </ul>
+        <h4 style="margin:1rem 0 0.5rem;color:var(--accent);">Friday = Flex Maker Day</h4>
+        <ul class="bullet-list">
+          <li>Primarily a maker day, but with flexibility for urgent meetings if needed.</li>
+          <li>Ideal for finalizing edits, polishing content, and planning for the next week.</li>
+        </ul>
+      </div>
+
+      <hr class="rule-h">
+
+      <div class="part-block">
+        <div class="part-label"><span class="part-badge">Part 04</span></div>
+        <h3>Implementation &amp; Best Practices</h3>
+        <div class="principle-list">
+          <div class="principle-item"><span class="principle-badge">Use Calendar Blocks</span><p>Have team members mark their Maker Time as "Do Not Disturb" on their calendars.</p></div>
+          <div class="principle-item"><span class="principle-badge">Enforce the Structure</span><p>Managers must respect deep work periods and avoid last-minute meeting requests.</p></div>
+          <div class="principle-item"><span class="principle-badge">Set Expectations with Clients &amp; Stakeholders</span><p>Example: "What's one thing I can do better to support you?"</p></div>
+          <div class="principle-item"><span class="principle-badge">Review &amp; Adjust</span><p>Gather feedback from the team regularly and refine the schedule as needed.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-box">
+      <div class="action-icon">!</div>
+      <h3>Conclusion</h3>
+      <p>Implementing a Maker vs. Manager schedule dramatically increases efficiency, reduces burnout, and enhances creativity within media teams. By protecting deep work time, your editors, writers, and designers can deliver better content faster, while managers maintain the strategic oversight they need to keep things running smoothly.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== REMOTE WORKSHEET ==================== -->
+<div class="section">
+  <div class="page-wrap">
+    <h2 style="margin-bottom:0.5rem;">Remote vs In-Person vs Hybrid Worksheet</h2>
+    <hr class="rule-h">
+
+    <div class="obj-box">
+      <div class="obj-label">Objective</div>
+      <div class="obj-content">
+        <p>This worksheet is designed to help teams determine the best work model — Remote, In-Person, or Hybrid — by evaluating key factors such as flexibility, collaboration, productivity, cost, talent pool, culture, and security needs. By circling responses that best reflect their team's requirements, users can easily identify the ideal work setup that aligns with their goals and operational needs.</p>
+      </div>
+    </div>
+
+    <h3 style="margin:2rem 0 1rem;">Instructions</h3>
+    <p>For each question, circle the answer that best describes your team's needs. Each circle counts as 1 point. At the end, tally up your points in each column — the column with the most points is your best-fit work model.</p>
+
+    <table class="remote-tbl">
+      <thead>
+        <tr><th>Question</th><th>Remote</th><th>In-Person</th><th>Hybrid</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>How important is flexibility for your team?</td><td>We need full freedom to work from anywhere</td><td>We thrive on fixed schedules and office presence</td><td>A mix of office and remote would work</td></tr>
+        <tr><td>How does your team collaborate best?</td><td>Through digital tools and async communication</td><td>In person with real-time discussions</td><td>A mix of structured in-office and remote work</td></tr>
+        <tr><td>What best describes your productivity needs?</td><td>Focused, independent work with minimal distractions</td><td>Structured work with in-person accountability</td><td>A mix of deep work and collaborative sessions</td></tr>
+        <tr><td>What's your budget for office space?</td><td>We want to save on costs</td><td>We're okay with higher office expenses</td><td>We need a balance — some office space but lower overhead</td></tr>
+        <tr><td>How important is hiring from a global talent pool?</td><td>Very important (Access to the best talent anywhere)</td><td>Not important (We prefer hiring locally)</td><td>Somewhat important (We need a mix of local and remote talent)</td></tr>
+        <tr><td>How do you build company culture?</td><td>Through virtual engagement and team-building activities</td><td>Through in-person bonding and shared experiences</td><td>A combination of remote and in-office culture-building</td></tr>
+        <tr><td>What are your security and IT needs?</td><td>We're okay with investing in remote security solutions</td><td>We need a controlled, in-office IT infrastructure</td><td>A mix of remote security and in-office IT support</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== CLOSING ==================== -->
+<div class="closer">
+  <div class="closer-inner">
+    <h2>End with this.</h2>
+    <p>If you made it this far, first of all — respect. Most people don't take the time to work through something like this, and that's exactly why most people never build a real brand.</p>
+    <p>Now, here's the deal: This is just the beginning. The strategies and frameworks in this workbook will only work if you apply them, iterate, and keep executing.</p>
+    <p>Shoot me a DM on IG. I'd love to hear how this is going for you. Keep me posted on your progress, your wins, and even the challenges you're running into. If you have questions that came up after going through the course and workbook, join my Town Hall (calebralston.com/townhall), where we dive deeper into brand building and answer real questions from people actually doing the work.</p>
+    <div class="sign-off">Appreciate you. Now go build a brand you're proud of.</div>
+    <div style="margin-top:3rem;">
+      <div class="brand-mark">ZB</div>
+      <div class="brand-url">www.calebralston.com</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
